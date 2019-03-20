@@ -9,7 +9,7 @@
                     <v-container grid-list-md>
                         <v-layout wrap>
                             <v-flex xs12>
-
+                                <v-img :src="detailData.photo"></v-img>
                             </v-flex>
                         </v-layout>
                     </v-container>
@@ -26,6 +26,11 @@
 <script>
     export default {
         name: "PhotoDetailDialog",
+        props:{
+            detailData:{
+             type:Object
+            }
+        },
         data(){
             return{
                 photoDialog: false,
@@ -40,3 +45,10 @@
 <style scoped>
 
 </style>
+
+
+<!--
+===============リファクタリング===============
+・写真詳細の内容にそのほかのメタデータを載せる。
+・ツイッターのコメントも？
+-->

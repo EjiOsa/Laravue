@@ -117,6 +117,7 @@
             </v-card>
         </v-dialog>
         <detail-dialog
+                :detail-data ="photoDetailData"
                 ref="detailDialog"
         >
         </detail-dialog>
@@ -154,6 +155,7 @@
         },
         data () {
             return {
+                photoDetailData: [],
                 photoSaveDialog: false,
                 prepareImages:[],
             }
@@ -256,6 +258,7 @@
                 }
             },
             photoDetailOpen(image){
+                this.photoDetailData = image;
                 this.$refs.detailDialog.photoDialog = true;
             },
         }
