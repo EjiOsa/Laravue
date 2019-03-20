@@ -115,6 +115,7 @@
                         alert(err)
                     });
                 this.$refs.eventFolder.listUpload();
+                
             },
             //イベントの削除
             async eventDelete(id){
