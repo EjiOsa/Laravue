@@ -7,13 +7,13 @@
             grid-list-md
         >
             <v-layout xs6>
-                <event-folder-base
+                <event-list
                         :token-data="tokenData"
                         ref="eventFolder"
                         @event-delete = "eventDelete"
                         @event-edit = "eventEdit"
                         @open-photo-save="openPhotoSave"
-                ></event-folder-base>
+                ></event-list>
             </v-layout>
         </v-container>
         <new-event-dialog
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    import EventFolderBase from './save_component/EventFolderBase'
+    import EventList from './save_component/EventList'
     import NewEventDialog from './save_component/NewEventDialog'
     import SaveDialog from './save_component/PhotoSaveDialog'
 
@@ -56,7 +56,7 @@
     export default {
         name: "PhotoSave",
         components:{
-            EventFolderBase,
+            EventList,
             NewEventDialog,
             SaveDialog
         },

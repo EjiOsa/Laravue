@@ -7,6 +7,7 @@
                 transition="dialog-bottom-transition"
         >
             <v-card>
+                <!--ツールバー-->
                 <v-toolbar
                         dark
                         fixed
@@ -18,7 +19,7 @@
                     <v-toolbar-title>『{{selectEvent.name}}』 Photo Management</v-toolbar-title>
                     <v-spacer></v-spacer>
                 </v-toolbar>
-
+　　　　　　　　　　<!--写真選択-->
                 <v-divider dark></v-divider>
                 <v-divider dark></v-divider>
                 <v-container
@@ -45,7 +46,7 @@
                     </v-btn>
                 </v-container>
                 <v-divider></v-divider>
-
+　　　　　　　　　　<!--写真保存待機-->
                 <v-container
                         fluid
                         grid-list-md
@@ -80,7 +81,7 @@
                     <v-btn color="blue-grey lighten-4" @click="photoRegistration">Photo Registration</v-btn>
                 </v-container>
                 <v-divider></v-divider>
-
+　　　　　　　　　　<!--保存済み写真-->
                 <v-container
                         fluid
                         grid-list-md
@@ -140,7 +141,7 @@
         props:{
             selectEvent:{
               type:String,
-          },
+            },
             eventImages:{
                 type:Object,
             },

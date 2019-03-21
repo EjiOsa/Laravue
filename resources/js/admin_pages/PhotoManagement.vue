@@ -1,20 +1,24 @@
 <template>
     <div>
-        <div class="split-box left-box">
-            <h2>Photo Management</h2>
-            <p>ユーザーフォルダへの振り分けページ
-            <br>スプリット画面
-            <br>左はユーザーフォルダ、フォルダ一覧ページかフォルダ内の詳細ページになる。詳細ページはユーザーの写真一覧ページを流用。
-            <br>右は写真保存ページの左側の部分をそのまま流用する。</p>
-            <photo-folder-base
-            :token-data="tokenData"
-            ></photo-folder-base>
-        </div>
-        <div class="split-box right-box">
-            <event-folder-base
-            :token-data="tokenData"
-            ></event-folder-base>
-        </div>
+        <h2>Photo Management</h2>
+        <v-container fluid grid-list-md>
+            <v-layout row wrap>
+                <v-flex d-flex xs5>
+                        <photo-folder-base
+                                :token-data="tokenData"
+                        ></photo-folder-base>
+                </v-flex>
+                <v-flex d-flex xs7>
+                        <manage-event-list
+                                :token-data="tokenData"
+                                :event-images="eventImages"
+                                ref="eventFolder"
+                                @open-photo="openPhoto"
+                        ></manage-event-list>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </div>
             <!--<ul>-->
             <!--<thumbnail-photo-->
                     <!--v-for="image in userImages"-->
@@ -49,13 +53,12 @@
                     <!--:image="image"-->
             <!--&gt;</thumbnail-photo>-->
         <!--</ul>-->
-    </div>
 </template>
 
 <script>
     // import PhotoFolder from './folder_conponent/Folder'
     import PhotoFolderBase from './folder_conponent/PhotoFolderBase'
-    import EventFolderBase from './save_component/EventFolderBase'
+    import ManageEventList from './folder_conponent/ManageEventList'
     // import ThumbnailPhoto from './save_component/ThumbnailPhoto'
 
     // const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/items';
@@ -74,7 +77,7 @@
         components:{
             // Folder,
             PhotoFolderBase,
-            EventFolderBase,
+            ManageEventList,
             // ThumbnailPhoto,
         },
         props:{
@@ -84,14 +87,14 @@
             }
         },
         computed:{
-            // tokenNo() {
-            //     return this.tokenData
-            // }
+            tokenNo() {
+                return this.tokenData
+            }
         },
         data () {
             return {
+                eventImages:[],
                 // images: [],
-
                 // userImages: [],
                 // users:[],
                 // showFolder: true,
@@ -108,6 +111,25 @@
             //     .then(response => (this.users = response.data));
         },
         methods: {
+            remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
+                for(var i = 0; i < base.length ; i++){
+                    base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
+                }
+                data = base;
+            },
+            async eventImageGet(event_id){
+                const EventPhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/event_photo_relation/'+event_id;
+                const EventPhotoAxios = require('axios').create({
+                    baseURL: EventPhotoUrl,
+                });
+                EventPhotoAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+                await EventPhotoAxios.get()
+                    .then(response => (this.eventImages = response.data));
+                this.remakeData(this.eventImages, this.eventImages);
+            },
+            openPhoto(event){
+                this.eventImageGet(event.id);
+            }
             // remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
             //     for(var i = 0; i < base.length ; i++){
             //         base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
@@ -129,22 +151,28 @@
 </script>
 
 <style scoped>
-    .split-box{
-        display: table;
-        position:absolute;
-        width:50%;
-        height:100%;
-    }
+    /*.split-box{*/
+        /*display: table;*/
+        /*position: absolute;*/
+        /*width: 50%;*/
+        /*height: 100%;*/
+    /*}*/
 
-    .left-box {
-        /*width:50%;*/
-        left:0;
-        overflow-y:scroll;
-    }
+    /*.left-box {*/
+        /*!*width:50%;*!*/
+        /*left:0;*/
+        /*overflow-y:scroll;*/
+    /*}*/
 
-    .right-box {
-    /*width:50%;*/
-    right:0;
-    /*overflow-y:scroll;*/
-    }
+    /*.right-box {*/
+        /*!*width:50%;*!*/
+        /*right:0;*/
+        /*!*overflow-y:scroll;*!*/
+    /*}*/
 </style>
+
+<!--
+==================リファクタリング==================
+・スプリット画面にして左右でスクロールを分けたかったけど、今は普通に分割画面に。
+
+-->

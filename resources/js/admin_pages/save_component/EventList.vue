@@ -73,7 +73,7 @@
     EventAxios.defaults.headers['Accept'] = 'application/json';
 
     export default {
-        name: "EventFolderBase",
+        name: "EventList",
         components:{
             // Folder,
             // ThumbnailPhoto,
