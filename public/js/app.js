@@ -1877,7 +1877,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _folder_conponent_PhotoFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder_conponent/PhotoFolderBase */ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue");
+/* harmony import */ var _folder_conponent_PhotoFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder_conponent/PhotoFolderBase */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue");
 /* harmony import */ var _folder_conponent_EventFolderBase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./folder_conponent/EventFolderBase */ "./resources/js/admin_pages/folder_conponent/EventList.vue");
 
 
@@ -2785,7 +2785,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -89515,15 +89515,15 @@ throw new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue":
 /*!***********************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue ***!
+  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue ***!
   \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhotoFolderBase_vue_vue_type_template_id_2a90a608_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true& */ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true&");
-/* harmony import */ var _PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PhotoFolderBase.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PhotoFolderBase_vue_vue_type_template_id_2a90a608_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true&");
+/* harmony import */ var _PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -89545,36 +89545,36 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue"
+component.options.__file = "resources/js/admin_pages/folder_conponent/ManageUserList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PhotoFolderBase.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ManageUserList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true&":
 /*!******************************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true& ***!
+  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& ***!
   \******************************************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-!(function webpackMissingModule() { var e = new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true&'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-throw new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true&'");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true&'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+throw new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true&'");
 
 
 /***/ }),

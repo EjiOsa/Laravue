@@ -4,16 +4,17 @@
         <v-container fluid grid-list-md>
             <v-layout row wrap>
                 <v-flex d-flex xs5>
-                        <photo-folder-base
+                        <manage-user-list
                                 :token-data="tokenData"
-                        ></photo-folder-base>
+                                :user-images="userImages"
+                                @open-user-photo="openUserPhoto"
+                        ></manage-user-list>
                 </v-flex>
                 <v-flex d-flex xs7>
                         <manage-event-list
                                 :token-data="tokenData"
                                 :event-images="eventImages"
-                                ref="eventFolder"
-                                @open-photo="openPhoto"
+                                @open-event-photo="openEventPhoto"
                         ></manage-event-list>
                 </v-flex>
             </v-layout>
@@ -56,9 +57,9 @@
 </template>
 
 <script>
-    // import PhotoFolder from './folder_conponent/Folder'
-    import PhotoFolderBase from './folder_conponent/PhotoFolderBase'
+    import ManageUserList from './folder_conponent/ManageUserList'
     import ManageEventList from './folder_conponent/ManageEventList'
+    // import PhotoFolder from './folder_conponent/Folder'
     // import ThumbnailPhoto from './save_component/ThumbnailPhoto'
 
     // const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/items';
@@ -75,9 +76,9 @@
     export default {
         name: "PhotoManagement",
         components:{
-            // Folder,
-            PhotoFolderBase,
+            ManageUserList,
             ManageEventList,
+            // Folder,
             // ThumbnailPhoto,
         },
         props:{
@@ -94,8 +95,8 @@
         data () {
             return {
                 eventImages:[],
+                userImages: [],
                 // images: [],
-                // userImages: [],
                 // users:[],
                 // showFolder: true,
             };
@@ -117,6 +118,23 @@
                 }
                 data = base;
             },
+
+            //ユーザーの写真表示
+            async userImageGet(user_id){
+                const UserPhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/photo_user_relation/'+user_id;
+                const UserPhotoAxios = require('axios').create({
+                    baseURL: UserPhotoUrl,
+                });
+                UserPhotoAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+                await UserPhotoAxios.get()
+                    .then(response => (this.userImages = response.data));
+                this.remakeData(this.userImages, this.userImages);
+            },
+            openUserPhoto(user){
+                this.userImageGet(user.id);
+            },
+
+            //イベントの写真表示
             async eventImageGet(event_id){
                 const EventPhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/event_photo_relation/'+event_id;
                 const EventPhotoAxios = require('axios').create({
@@ -127,25 +145,9 @@
                     .then(response => (this.eventImages = response.data));
                 this.remakeData(this.eventImages, this.eventImages);
             },
-            openPhoto(event){
+            openEventPhoto(event){
                 this.eventImageGet(event.id);
-            }
-            // remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
-            //     for(var i = 0; i < base.length ; i++){
-            //         base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
-            //     }
-            //     data = base;
-            // },
-            // async userImage(user_id){
-            //     const UserPhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/photo_user_relation/'+user_id;
-            //     const UserPhotoAxios = require('axios').create({
-            //         baseURL: UserPhotoUrl,
-            //     });
-            //     UserPhotoAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            //     await UserPhotoAxios.get()
-            //         .then(response => (this.userImages = response.data));
-            //     this.remakeData(this.userImages, this.userImages);
-            // }
+            },
         },
     }
 </script>
@@ -174,5 +176,5 @@
 <!--
 ==================リファクタリング==================
 ・スプリット画面にして左右でスクロールを分けたかったけど、今は普通に分割画面に。
-
+・Manage~~Listは一つにまとめられそう。時間をみてまとめる。
 -->

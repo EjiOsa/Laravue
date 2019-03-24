@@ -16,7 +16,7 @@
                     lg3
             >
                 <v-card
-                        @dblclick=openPhoto(event)
+                        @dblclick=openEventPhoto(event)
                 >
                     <span class="headline black--text" v-text="event.name"></span>
                     <v-card-actions>
@@ -43,7 +43,11 @@
             >
                 <!--align-self-centerで上下の中央揃え-->
                 <v-card>
-                    <v-img :src="image.photo"></v-img>
+                    <v-img
+                            :src="image.photo"
+                            draggable="true"
+                            @dragstart="movePhoto(image)"
+                    ></v-img>
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <!--<v-btn icon @click="photoDetailOpen(image)">-->
@@ -109,6 +113,22 @@
             // ));
         },
         methods: {
+            //ドラッグスタート処理
+            movePhoto(image){
+                event.dataTransfer.setData("text", image.id);
+            },
+            //ダブルクリック処理
+            openEventPhoto(event){
+                this.listTitle = event.name;
+                this.showList =false;
+                this.$emit('open-event-photo', event);
+            },
+            //リストへ戻る
+            backList(){
+                this.showList =true;
+                this.$parent.eventImages =[];
+            },
+
             // remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
             //     for(var i = 0; i < base.length ; i++){
             //         base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
@@ -130,14 +150,14 @@
             //     this.showFolder = true;
             //     this.eventImages = [];
             // },
-
-            listUpload(){
-                EventAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-                EventAxios.get()
-                    .then(response => (
-                        this.events = response.data
-                    ));
-            },
+            //
+            // listUpload(){
+            //     EventAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+            //     EventAxios.get()
+            //         .then(response => (
+            //             this.events = response.data
+            //         ));
+            // },
             // eventDelete(id){
             //     if (confirm('イベントを削除しますか？')) {
             //         if (confirm('本当にイベントを削除しますか？\nイベント内の画像も削除されます。')) {
@@ -152,15 +172,6 @@
             //         this.$emit('event-edit', event);
             //     }
             // },
-            openPhoto(event){
-                this.listTitle = event.name;
-                this.showList =false;
-                this.$emit('open-photo', event);
-            },
-            backList(){
-                this.showList =true;
-                this.$parent.eventImages =[];
-            }
         },
     }
 </script>
@@ -168,3 +179,9 @@
 <style scoped>
 
 </style>
+
+<!--
+==================リファクタリング==================
+・イベント内の写真リストの大きさを調整
+
+-->

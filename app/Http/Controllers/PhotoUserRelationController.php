@@ -23,6 +23,14 @@ class PhotoUserRelationController extends Controller
 
     public function store(Request $request)
     {
-
+        $user_id = $request->user_id;
+        $photo_id = $request->photo_id;
+        $user = User::find($user_id);
+        $user_photo_data = User::where('id', $user_id)->with('photos')->get()[0]->photos;
+        foreach ($user_photo_data as $data){
+            $photo_id_list[] = $data->id;
+        }
+        $photo_id_list[] = $photo_id;
+        $user->photos()->sync($photo_id_list);
     }
 }
