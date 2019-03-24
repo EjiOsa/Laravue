@@ -138,7 +138,7 @@
             ></v-navigation-drawer>
             <!--======ルートページ======-->
             <v-content>
-                <v-container fluid fill-height>
+                <v-container fluid>
                     <v-layout justify-center align-center>
                         <!--<v-flex shrink>-->
                             <!--<v-tooltip right>-->

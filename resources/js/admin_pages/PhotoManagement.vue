@@ -2,15 +2,15 @@
     <div>
         <h2>Photo Management</h2>
         <v-container fluid grid-list-md>
-            <v-layout row wrap>
-                <v-flex d-flex xs5>
+            <v-layout>
+                <v-flex xs5>
                         <manage-user-list
                                 :token-data="tokenData"
                                 :user-images="userImages"
                                 @open-user-photo="openUserPhoto"
                         ></manage-user-list>
                 </v-flex>
-                <v-flex d-flex xs7>
+                <v-flex xs7>
                         <manage-event-list
                                 :token-data="tokenData"
                                 :event-images="eventImages"
