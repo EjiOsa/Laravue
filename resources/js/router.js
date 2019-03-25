@@ -22,11 +22,11 @@ const routes = [
         name: 'UserRegistration',
         component: Registration
     },
-    {
-        path: '/admin/UserDetail',
-        name:'UserDetail',
-        component: UserDetail
-    },
+    // {
+    //     path: '/admin/UserDetail',
+    //     name:'UserDetail',
+    //     component: UserDetail
+    // },
     {
         path: '/admin/PhotoSave',
         name: 'PhotoSave',

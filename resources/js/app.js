@@ -45,5 +45,5 @@ const admin_top = new Vue({
 const user_top = new Vue({
     el: '#user-top',
     router,
-    render:h=>h(UserRoot)
+    // render:h=>h(UserRoot)
 });
