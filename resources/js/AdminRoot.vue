@@ -219,7 +219,7 @@
 </template>
 
 <script>
-    let csrf_token = $('meta[name="csrf-token"]').attr('content');
+    // let csrf_token = $('meta[name="csrf-token"]').attr('content');//これ使ってない。vueでログアウトの時に書いた文のようだけど、コピペで忘れた。
 
     export default {
         name: "AdminRoot",
@@ -233,7 +233,7 @@
         data(){
             return {
                 show: true,
-                token: csrf_token,
+                // token: csrf_token,
                 drawerRight: true,
                 drawerLeft: false,
                 // right: null,
@@ -244,7 +244,7 @@
             logout(){
                 if (confirm('ログアウトしますか？')) {
                     event.preventDefault();
-                    document.getElementById('logout-form').submit();
+                    document.getElementById('admin-logout-form').submit();//これでadmin_topのを呼んでる。
                 }
             }
         },

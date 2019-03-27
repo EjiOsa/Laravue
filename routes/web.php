@@ -15,7 +15,7 @@ Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
-| 1) User 認証不要
+| 1) User 未認証
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
@@ -38,14 +38,14 @@ Route::middleware('auth:user')->group(function (){
 
 /*
 |--------------------------------------------------------------------------
-| 3) Admin 認証不要
+| 3) Admin 未認証
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/',         function () { return redirect('/admin/home'); });
     Route::get('login',     'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\Auth\LoginController@login');
-    Route::get('/{any?}',   'Admin\HomeController@index')->where('any', '.+');//独自に追加、これでadminの後に何を入れてもhomeにいく。
+    Route::get('/{any?}',   'Admin\HomeController@index')->where('any', '.+');//自分で追加、これでadminの後に何を入れてもhomeにいく。
 });
 
 /*

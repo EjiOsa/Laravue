@@ -42,6 +42,7 @@ class RestAppUserController extends Controller
         $user->age = $request->age;
         $user->email = $request->email;
         $user->password = Hash::make($request->first_name . $request->age);
+        $user->api_token = str_random(60);
         //管理画面で確認するため、ハッシュ化しない。//でもログインではハッシュ化が必要なのでハッシュ化する。管理画面には表示せず。first_nameと年齢でパスワード
         $user->save();
     }

@@ -47,10 +47,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // csrf例外だった場合はログイン画面に飛ばす
+        // csrf例外だった場合はログイン画面に飛ばす //timeout時にlogout画面を探して404エラーになるので採用。
         if ($exception instanceof \Illuminate\Session\TokenMismatchException){
             session()->flash('csrfError', true);
-            return redirect()->to(route('admin.login'));
+            return redirect()->to(route('admin.login'));//timeout後は全ルートがadminになる。
+//            if (in_array('admin', $exception->guards(), true)) {
+//                return redirect()->guest(route('admin.login'));
+//            }else {
+//                return redirect()->guest(route('login'));
+//            }
         }
 
         return parent::render($request, $exception);

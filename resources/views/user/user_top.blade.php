@@ -25,11 +25,12 @@
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         {{--送信時に認証用のトークン付与のために追加--}}
         <script>
-            Window.Laravel = {csrfToken: "{{ csrf_token() }}"}
+            Window.Laravel = {csrfToken: "{{ csrf_token() }}"};
+                {{--window.Laravel = {!! json_encode(['apiToken' => \Auth::user()->api_token ?? null]) !!};--}}
         </script>
     </head>
     <body>
-    <div id="admin">
+    <div id="user">
         {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
             {{--<div class="container">--}}
 
@@ -64,7 +65,7 @@
                                         {{--{{ __('ログアウト') }}--}}
                                     {{--</a>--}}
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="user-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 {{--</div>--}}
@@ -76,7 +77,10 @@
         {{--</nav>--}}
         <div id="user-top">
             {{--<router-view></router-view>--}}
-            <user-root token-data="{{ Auth::user()->api_token }}"/>
+            <user-root
+                    token-data="{{ Auth::user()->api_token }}"
+                    user-id="{{ Auth::user()->id }}"
+            ></user-root>
         </div>
     </div>
 {{--この下の1行がvue用の追加文章。合計3行追加--}}

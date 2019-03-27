@@ -23,16 +23,16 @@
                         </v-list-tile-content>
                     </v-list-tile>
 
-                    <!--<v-list-tile to="/admin/Registration">-->
-                        <!--<v-list-tile-action>-->
-                            <!--<v-icon>supervised_user_circle</v-icon>-->
-                        <!--</v-list-tile-action>-->
-                        <!--<v-list-tile-content>-->
-                            <!--<v-list-tile-title>-->
-                                <!--User Registration-->
-                            <!--</v-list-tile-title>-->
-                        <!--</v-list-tile-content>-->
-                    <!--</v-list-tile>-->
+                    <v-list-tile to="/PhotoList">
+                        <v-list-tile-action>
+                            <v-icon>supervised_user_circle</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>
+                                PhotoList
+                            </v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
 
                     <!--<v-list-tile to="/admin/UserDetail">-->
                     <!--<v-list-tile-action>-->
@@ -89,7 +89,7 @@
             </v-navigation-drawer>
             <!--======ツールバー======-->
             <v-toolbar
-                    color="grey lighten-5"
+                    color="grey lighten-2"
                     fixed
                     app
                     clipped-right
@@ -127,13 +127,17 @@
                 <v-container fluid>
                     <v-layout justify-center align-center>
                         <div class="container">
-                            <router-view :token-data="tokenData"/>
+                            <router-view
+                                    :token-data="tokenData"
+                                    :user-id="userId"
+                            />
                         </div>
                     </v-layout>
                 </v-container>
             </v-content>
 
-            <v-footer color="grey lighten-5" class="white--text">
+            <!--=======フッター=======-->
+            <v-footer color="grey lighten-2" class="black--text">
                 <span>Vuetify</span>
                 <v-spacer></v-spacer>
                 <span>&copy; 2019  </span>
@@ -152,13 +156,16 @@
                 type: String,
                 required: true,
                 // source: String
+            },
+            userId:{
+                type: String
             }
         },
         data(){
             return {
                 show: true,
-                // token: user_csrf_token,
                 drawerRight: true,
+                // token: user_csrf_token,
                 // drawerLeft: false,
                 // right: null,
                 // left: null,
@@ -168,7 +175,7 @@
             logout(){
                 if (confirm('ログアウトしますか？')) {
                     event.preventDefault();
-                    document.getElementById('logout-form').submit();
+                    document.getElementById('user-logout-form').submit();
                 }
             }
         },

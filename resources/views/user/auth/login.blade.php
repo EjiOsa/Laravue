@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
-@section('content')
+@section('user-content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -59,7 +59,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('パスワードをお忘れですか?') }}
                                     </a>
                                 @endif
                             </div>

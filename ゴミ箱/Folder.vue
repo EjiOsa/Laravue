@@ -51,7 +51,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import '../../../sass/app';
+    @import '../resources/sass/app';
 
     .split-box{
         /*position:absolute;*/

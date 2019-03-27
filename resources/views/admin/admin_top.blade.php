@@ -63,7 +63,7 @@
                                         {{--{{ __('ログアウト') }}--}}
                                     {{--</a>--}}
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                    <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 {{--</div>--}}
