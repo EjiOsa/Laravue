@@ -19,7 +19,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{--========================================================--}}
 
-        <title>PhotoSharingAdmin</title>
+        <title>Photo Sharing Admin</title>
     {{--この下の2行がvue用の追加文章--}}
         {{--<meta name="csrf-token" content="{{ csrf_token() }}">Authを入れたためか、これではAuthなしのページもエラーになった。--}}
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">

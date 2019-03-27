@@ -21,6 +21,11 @@
                     <v-img :src="image.photo"></v-img>
                     <v-card-actions>
                         <v-spacer></v-spacer>
+                        <v-checkbox
+                                v-model="selectedPhotoId"
+                                :value=image.id
+                        >
+                        </v-checkbox>
                         <v-btn icon @click="photoDetailOpen(image)">
                             <v-icon>open_in_browser</v-icon>
                         </v-btn>
@@ -36,6 +41,7 @@
                 ref="detailDialog"
         >
         </detail-dialog>
+        <v-btn color="grey lighten-4" @click="photoDownLoad">Photo DownLoad</v-btn>
     </v-container>
 </template>
 
@@ -66,7 +72,7 @@
             return {
                 userImages:{},
                 photoDetailData: [],
-                // tokenNo:"uGI09ICALLdclOBe8UtTvyBzXKodnoJkcc6pHMmRCi4KhALJShbN2s8KmTdi",
+                selectedPhotoId:[],
             }
         },
         async created(){
@@ -90,6 +96,12 @@
                 this.photoDetailData = image;
                 this.$refs.detailDialog.photoDialog = true;
             },
+            photoDownLoad(){
+              alert(this.selectedPhotoId);
+              
+
+              this.selectedPhotoId = [];
+            },
         }
     }
 </script>
@@ -97,3 +109,9 @@
 <style scoped>
 
 </style>
+<!--
+==================リファクタリング========================
+・チェックボックスの配置を修正
+・
+
+-->
