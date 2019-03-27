@@ -3,14 +3,14 @@
         <h2>Photo Management</h2>
         <v-container fluid grid-list-md>
             <v-layout>
-                <v-flex xs5>
+                <v-flex xs6>
                         <manage-user-list
                                 :token-data="tokenData"
                                 :user-images="userImages"
                                 @open-user-photo="openUserPhoto"
                         ></manage-user-list>
                 </v-flex>
-                <v-flex xs7>
+                <v-flex xs6>
                         <manage-event-list
                                 :token-data="tokenData"
                                 :event-images="eventImages"
@@ -177,4 +177,5 @@
 ==================リファクタリング==================
 ・スプリット画面にして左右でスクロールを分けたかったけど、今は普通に分割画面に。
 ・Manage~~Listは一つにまとめられそう。時間をみてまとめる。
+・画像の選択方法や選択後の登録方法、あとユーザー画像を開いた状態での追加も実装する。
 -->

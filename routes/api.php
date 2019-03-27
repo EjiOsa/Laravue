@@ -20,11 +20,11 @@ use Illuminate\Http\Request;
 //Route::resource('/items', 'RestAppUserController');
 
 //ユーザー管理へのルート
-Route::middleware('auth:api')->resource('/users', 'RestAppUserController');
+Route::middleware('auth:admin-api')->resource('/users', 'RestAppUserController');
 
 //登録画像へのルート
 //Route::group(['middleware'=>'auth:api'],function (){//下の文章でも可能
-Route::middleware('auth:api')->resource('/photos', 'PhotoController');
+Route::middleware('auth:admin-api')->resource('/photos', 'PhotoController');
 //    ->group(function (){
 //    Route::get('/photos', 'PhotoController@index');
 //    Route::post('/photos', 'PhotoController@store');
@@ -32,16 +32,17 @@ Route::middleware('auth:api')->resource('/photos', 'PhotoController');
 //});
 
 //Photo Userのリレーションへのルート
-Route::middleware('auth:api')->group(function (){
+//Route::group(['middleware' => ['auth:admin-api','auth:user-api']], function (){
+Route::middleware('auth:admin-api,user-api')->group(function (){//apiへのアクセスでuserとadminどちらでも必要なので、auth:admin-api,user-apiのようにして複数指定。
     Route::get('/photo_user_relation/{user_id}', 'PhotoUserRelationController@index');
     Route::post('/photo_user_relation', 'PhotoUserRelationController@store');
 });
 
 //Eventへのルート
-Route::middleware('auth:api')->resource('/events', 'RestAppEventController');
+Route::middleware('auth:admin-api')->resource('/events', 'RestAppEventController');
 
 //Event Photoのリレーションへのルート
-Route::middleware('auth:api')->group(function (){
+Route::middleware('auth:admin-api')->group(function (){
     Route::get('/event_photo_relation/{event_id}', 'EventPhotoRelationController@index');
     Route::post('/event_photo_relation', 'EventPhotoRelationController@store');
 });

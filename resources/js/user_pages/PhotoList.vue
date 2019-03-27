@@ -58,15 +58,15 @@
             }
         },
         computed:{
-            // tokenNo() {
-            //     return this.tokenData
-            // }
+            tokenNo() {
+                return this.tokenData
+            }
         },
         data () {
             return {
                 userImages:{},
                 photoDetailData: [],
-                tokenNo:"uGI09ICALLdclOBe8UtTvyBzXKodnoJkcc6pHMmRCi4KhALJShbN2s8KmTdi",
+                // tokenNo:"uGI09ICALLdclOBe8UtTvyBzXKodnoJkcc6pHMmRCi4KhALJShbN2s8KmTdi",
             }
         },
         async created(){

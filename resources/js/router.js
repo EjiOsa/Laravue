@@ -3,12 +3,12 @@ import VueRouter from 'vue-router'
 
 // ページコンポーネントをインポート
 import Registration from './admin_pages/UserRegistration'//.vueは省略可能
-import UserDetail from '../../ゴミ箱/UserDetail'
+// import UserDetail from '../../ゴミ箱/UserDetail'
 import PhotoSave from './admin_pages/PhotoSave'
 import PhotoManage from './admin_pages/PhotoManagement'
 
 import PhotoList from './user_pages/PhotoList'
-import PhotoDetail from './user_pages/PhotoDetail'
+// import PhotoDetail from '../../ゴミ箱/PhotoDetail'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -43,11 +43,11 @@ const routes = [
         name: 'PhotoList',
         component: PhotoList
     },
-    {
-        path: '/PhotoDetail',
-        name: 'PhotoDetail',
-        component: PhotoDetail
-    }
+    // {
+    //     path: '/PhotoDetail',
+    //     name: 'PhotoDetail',
+    //     component: PhotoDetail
+    // }
 ];
 
 // VueRouterインスタンスを作成する
