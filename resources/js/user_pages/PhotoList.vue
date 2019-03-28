@@ -98,7 +98,7 @@
             },
             photoDownLoad(){
               alert(this.selectedPhotoId);
-              
+
 
               this.selectedPhotoId = [];
             },

@@ -36,6 +36,7 @@ Route::middleware('auth:admin-api')->resource('/photos', 'PhotoController');
 Route::middleware('auth:admin-api,user-api')->group(function (){//apiへのアクセスでuserとadminどちらでも必要なので、auth:admin-api,user-apiのようにして複数指定。
     Route::get('/photo_user_relation/{user_id}', 'PhotoUserRelationController@index');
     Route::post('/photo_user_relation', 'PhotoUserRelationController@store');
+    Route::put('/photo_user_relation/{user_id}', 'PhotoUserRelationController@update');
 });
 
 //Eventへのルート

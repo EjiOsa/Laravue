@@ -50,9 +50,13 @@
                         <!--<v-btn icon @click="photoDetailOpen(image)">-->
                         <!--<v-icon>open_in_browser</v-icon>-->
                         <!--</v-btn>-->
-                        <!--<v-btn icon @click="keepPhotoDelete(image)">-->
-                        <!--<v-icon>delete</v-icon>-->
-                        <!--</v-btn>-->
+                        <v-btn
+                                icon
+                                @click="userPhotoDelete(image)"
+                                small
+                        >
+                            <v-icon>delete</v-icon>
+                        </v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -124,6 +128,7 @@
                 users:[],
                 showList: true,
                 listTitle:'',
+                selectUserId:'',
             };
         },
         async mounted () {
@@ -153,14 +158,28 @@
             //ユーザーの画像表示
             openUserPhoto(user){
                 this.listTitle = user.first_name;
+                this.selectUserId = user.id;
                 this.showList =false;
-                this.$emit('open-user-photo', user);
+                this.$emit('open-user-photo', this.selectUserId);
             },
             //リストに戻る
             backList(){
                 this.showList = true;
                 this.$parent.userImages = [];
             },
+            //ユーザーの写真削除
+            async userPhotoDelete(image){
+                PhotoUserAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
+                await PhotoUserAxios.put(PhotoUserUrl+'/'+this.selectUserId, image)
+                    .then(
+                        alert('photo delete ok'),
+                    )
+                    .catch(function (err) {
+                        alert(err);
+                    });
+                this.$parent.userImages = [];
+                this.$emit('open-user-photo', this.selectUserId);
+            }
 
         },
     }

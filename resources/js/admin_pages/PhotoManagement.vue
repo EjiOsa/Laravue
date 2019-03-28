@@ -130,8 +130,8 @@
                     .then(response => (this.userImages = response.data));
                 this.remakeData(this.userImages, this.userImages);
             },
-            openUserPhoto(user){
-                this.userImageGet(user.id);
+            openUserPhoto(id){
+                this.userImageGet(id);
             },
 
             //イベントの写真表示

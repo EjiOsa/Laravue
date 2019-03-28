@@ -33,4 +33,17 @@ class PhotoUserRelationController extends Controller
         $photo_id_list[] = $photo_id;
         $user->photos()->sync($photo_id_list);
     }
+
+    public function update(Request $request, $id)
+    {
+        $delete_photo_id[] = $request->id;
+        $user = User::find($id);
+        $user_photo_data = User::where('id', $id)->with('photos')->get()[0]->photos;
+        foreach ($user_photo_data as $data){
+            $photo_id_list[] = $data->id;
+        }
+        $result = array_diff($photo_id_list, $delete_photo_id);//第二引数は配列にしないといけない。
+        $photo_id_list = array_values($result);
+        $user->photos()->sync($photo_id_list);
+    }
 }
