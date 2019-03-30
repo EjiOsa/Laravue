@@ -32,6 +32,9 @@ class PhotoUserRelationController extends Controller
         }
         $photo_id_list[] = $photo_id;
         $user->photos()->sync($photo_id_list);
+
+        $user->photo_count = count($photo_id_list);
+        $user->save();
     }
 
     public function update(Request $request, $id)
@@ -45,5 +48,8 @@ class PhotoUserRelationController extends Controller
         $result = array_diff($photo_id_list, $delete_photo_id);//第二引数は配列にしないといけない。
         $photo_id_list = array_values($result);
         $user->photos()->sync($photo_id_list);
+
+        $user->photo_count = count($photo_id_list);
+        $user->save();
     }
 }

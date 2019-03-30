@@ -55,7 +55,7 @@ class RestAppUserController extends Controller
      */
     public function show($id)
     {
-        $photo_count = User::find($id)->employees;
+//        $photo_count = User::find($id)->employees;
 
     }
 

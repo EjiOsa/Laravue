@@ -27,7 +27,7 @@
                              </v-list-tile>
                              <v-list-tile>
                                  <v-list-tile-content>Photos:</v-list-tile-content>
-                                 <v-list-tile-content class="align-end">              </v-list-tile-content>
+                                 <v-list-tile-content class="align-end">{{props.item.photo_count}}</v-list-tile-content>
                              </v-list-tile>
                              <!--<v-list-tile>-->
                                  <!--<v-list-tile-content>Age:</v-list-tile-content>-->
@@ -115,5 +115,4 @@ export default {
 ==================リファクタリング========================
 ・カードの表示内容のカテゴリーをどうするか。
 ・カードの内容もグループを使えるようにするなら、familyとfirstをnameに統一する。
-・カード内に所有写真数を載せたいが、Laravelからの操作が良さそう。
  -->
