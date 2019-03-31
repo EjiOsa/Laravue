@@ -15,7 +15,24 @@
                 <v-card
                         @dblclick=openPhotoSave(event)
                 >
-                    <span class="headline black--text" v-text="event.name"></span>
+                    <v-card-title><h3>{{event.name}}</h3></v-card-title>
+                    <!--<v-container fill-height fluid>-->
+                        <!--<v-layout fill-height>-->
+                            <!--<v-flex xs12 align-end flexbox>-->
+                                <!--<span-->
+                                        <!--class="headline black&#45;&#45;text"-->
+                                        <!--v-text="event.name"-->
+                                <!--&gt;</span>-->
+                            <!--</v-flex>-->
+                        <!--</v-layout>-->
+                    <!--</v-container>-->
+                    <v-divider></v-divider>
+                    <v-list dense>
+                        <v-list-tile>
+                            <v-list-tile-content>Photos:</v-list-tile-content>
+                            <v-list-tile-content class="align-end">{{event.photo_count}}</v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn icon @click="eventEdit(event)">
@@ -152,7 +169,7 @@
             },
             openPhotoSave(event){
                 this.$emit('open-photo-save', event);
-            }
+            },
         },
     }
 </script>

@@ -226,6 +226,7 @@
                     this.prepareImages = [];
                     this.$parent.eventImages = {};
                     this.$parent.eventImageGet(this.selectEvent.id);
+                    this.$parent.eventReset();
                 }
             },
             //ドラッグ操作
@@ -256,6 +257,7 @@
                         });
                     this.$parent.eventImages = {};
                     this.$parent.eventImageGet(this.selectEvent.id);
+                    this.$parent.eventReset();
                 }
             },
             photoDetailOpen(image){

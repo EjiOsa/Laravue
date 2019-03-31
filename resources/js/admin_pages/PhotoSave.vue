@@ -102,7 +102,7 @@
                     .catch(function (err) {
                         alert(err)
                     });
-                this.$refs.eventFolder.listUpload();
+                this.eventReset();
             },
             //イベントの追加
             async eventRegistration(){
@@ -173,7 +173,12 @@
                 this.selectEvent = event;
                 this.eventImageGet(event.id);
                 this.$refs.saveDialog.photoSaveDialog = true;
+            },
+            //Eventの再レンダリング
+            eventReset(){
+                this.$refs.eventFolder.listUpload();
             }
+
         },
     }
 </script>

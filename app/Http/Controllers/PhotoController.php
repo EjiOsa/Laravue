@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PhotoRequest;
 use App\Photo;
-//use App\Event;
+use App\Event;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
@@ -35,12 +35,23 @@ class PhotoController extends Controller
             $photo->event_id = $request->event_id;//写真保存時にイベントデータと紐付け
             $photo->save();
         }
+        //以下、イベントの写真保有数の登録。本来はEventPhotoRelationでやるべき。
+        $event = Event::find($request->event_id);
+        $event->photo_count = count($event->photos);
+        $event->save();
+
 //        $request->photo->storeAs('/sharing_photos', 'test.jpeg');//単数の基本形
     }
 
     public function destroy($id)
     {
+        $photo = Photo::find($id);
+        $event = Event::find($photo->event_id);
+
         Photo::destroy($id);
+        //以下、イベントの写真保有数の調整。本来はEventPhotoRelationでやるべき。
+        $event->photo_count = count($event->photos);
+        $event->save();
     }
 }
 //https://php-junkie.net/framework/laravel/upload_image/
