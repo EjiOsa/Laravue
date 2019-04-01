@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Photo;
+use App\User;
 
 class RestAppEventController extends Controller
 {
@@ -87,10 +88,19 @@ class RestAppEventController extends Controller
     public function destroy($id)
     {
         $delete_photo_ids = Event::find($id)->photos->pluck('id');
-        //find($id)でイベントを指定、そのイベントに紐づいているのを->photosで指定(コレクションで返ってくる)。
+        //find($id)でイベントを指定、そのイベントに紐づいているphotoを->photosで指定(コレクションで返ってくる)。
         //pluck('id')でphotoのidを取得。
         foreach ($delete_photo_ids as $delete_photo_id) {
+            $delete_photo_users = Photo::find($delete_photo_id)->users;//削除したイベントに紐づいてるユーザーの指定
             Photo::destroy($delete_photo_id);
+            //以下、ユーザーがいた場合の処理
+            if (count($delete_photo_users)>0){
+                foreach ($delete_photo_users as $delete_photo_user) {
+                    //$user = User::where('id', $delete_photo_user->id);
+                    $delete_photo_user->photo_count = count($delete_photo_user->photos);
+                    $delete_photo_user->save();
+                }
+            }
         }
         Event::destroy($id);
     }

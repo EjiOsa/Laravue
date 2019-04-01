@@ -46,12 +46,20 @@ class PhotoController extends Controller
     public function destroy($id)
     {
         $photo = Photo::find($id);
+        $delete_photo_users = $photo->users;//写真と紐づいてるユーザーの指定
         $event = Event::find($photo->event_id);
 
         Photo::destroy($id);
         //以下、イベントの写真保有数の調整。本来はEventPhotoRelationでやるべき。
         $event->photo_count = count($event->photos);
         $event->save();
+        //以下、写真削除でのUserの保有数も調整
+        if (count($delete_photo_users)>0){//まずはユーザーがあるか確認
+            foreach ($delete_photo_users as $delete_photo_user) {
+                $delete_photo_user->photo_count = count($delete_photo_user->photos);//再カウント
+                $delete_photo_user->save();
+            }
+        }
     }
 }
 //https://php-junkie.net/framework/laravel/upload_image/

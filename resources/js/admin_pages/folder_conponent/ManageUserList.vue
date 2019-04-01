@@ -19,16 +19,15 @@
                         @dblclick=openUserPhoto(user)
                         @drop.prevent="photoDrop(user)"
                 >
-                    <span class="headline black--text" v-text="user.first_name"></span>
-                    <v-card-actions>
-                        <!--<v-spacer></v-spacer>-->
-                        <!--<v-btn icon @click="eventEdit(event)">-->
-                        <!--<v-icon>edit</v-icon>-->
-                        <!--</v-btn>-->
-                        <!--<v-btn icon @click="eventDelete(event.id)">-->
-                        <!--<v-icon>clear</v-icon>-->
-                        <!--</v-btn>-->
-                    </v-card-actions>
+                    <!--<span class="headline black&#45;&#45;text" v-text="user.first_name"></span>-->
+                    <v-card-title><h5>{{user.first_name}}</h5></v-card-title>
+                    <v-divider></v-divider>
+                    <v-list dense>
+                        <v-list-tile>
+                            <v-list-tile-content>Photos:</v-list-tile-content>
+                            <v-list-tile-content class="align-end">{{user.photo_count}}</v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -137,6 +136,12 @@
                 .then(response => (this.users = response.data));
         },
         methods: {
+            //リストの再描画
+            async userListUpload(){
+                UserAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+                await UserAxios.get()
+                    .then(response => (this.users = response.data));
+            },
             //ドロップ
             async photoDrop(user){
                 let photoId = event.dataTransfer.getData("text");
@@ -154,6 +159,7 @@
                     .catch(function (err) {
                         alert(err);
                     });
+                this.userListUpload();
             },
             //ユーザーの画像表示
             openUserPhoto(user){
@@ -179,6 +185,7 @@
                     });
                 this.$parent.userImages = [];
                 this.$emit('open-user-photo', this.selectUserId);
+                this.userListUpload();
             }
 
         },

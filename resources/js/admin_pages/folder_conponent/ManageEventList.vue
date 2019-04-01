@@ -18,16 +18,15 @@
                 <v-card
                         @dblclick=openEventPhoto(event)
                 >
-                    <span class="headline black--text" v-text="event.name"></span>
-                    <v-card-actions>
-                        <!--<v-spacer></v-spacer>-->
-                        <!--<v-btn icon @click="eventEdit(event)">-->
-                            <!--<v-icon>edit</v-icon>-->
-                        <!--</v-btn>-->
-                        <!--<v-btn icon @click="eventDelete(event.id)">-->
-                            <!--<v-icon>clear</v-icon>-->
-                        <!--</v-btn>-->
-                    </v-card-actions>
+                    <!--<span class="headline black&#45;&#45;text" v-text="event.name"></span>-->
+                    <v-card-title><h5>{{event.name}}</h5></v-card-title>
+                    <v-divider></v-divider>
+                    <v-list dense>
+                        <v-list-tile>
+                            <v-list-tile-content>Photos:</v-list-tile-content>
+                            <v-list-tile-content class="align-end">{{event.photo_count}}</v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -48,15 +47,15 @@
                             draggable="true"
                             @dragstart="movePhoto(image)"
                     ></v-img>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
+                    <!--<v-card-actions>-->
+                        <!--<v-spacer></v-spacer>-->
                         <!--<v-btn icon @click="photoDetailOpen(image)">-->
                             <!--<v-icon>open_in_browser</v-icon>-->
                         <!--</v-btn>-->
                         <!--<v-btn icon @click="keepPhotoDelete(image)">-->
                             <!--<v-icon>delete</v-icon>-->
                         <!--</v-btn>-->
-                    </v-card-actions>
+                    <!--</v-card-actions>-->
                 </v-card>
             </v-flex>
         </v-layout>
