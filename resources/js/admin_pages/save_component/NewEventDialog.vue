@@ -38,10 +38,10 @@
         name: "NewEventDialog",
         props:{
             newEvent:{
-                type:Object
+                type: Object
             },
             eventNameList:{//||is_not:eventNameListとしたい。
-                type:Object
+                type: Array
             }
         },
         data(){

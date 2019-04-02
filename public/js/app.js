@@ -1877,8 +1877,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _folder_conponent_PhotoFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder_conponent/PhotoFolderBase */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue");
-/* harmony import */ var _folder_conponent_EventFolderBase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./folder_conponent/EventFolderBase */ "./resources/js/admin_pages/folder_conponent/EventList.vue");
+/* harmony import */ var _folder_conponent_PhotoFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./manage_conponent/PhotoFolderBase */ "./resources/js/admin_pages/manage_conponent/ManageUserList.vue");
+/* harmony import */ var _folder_conponent_EventFolderBase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./manage_conponent/EventFolderBase */ "./resources/js/admin_pages/manage_conponent/EventList.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1929,7 +1929,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-// import PhotoFolder from './folder_conponent/Folder'
+// import PhotoFolder from './manage_conponent/Folder'
 
  // import ThumbnailPhoto from './save_component/ThumbnailPhoto'
 // const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/items';
@@ -2020,7 +2020,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _folder_conponent_EventFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./folder_conponent/EventFolderBase */ "./resources/js/admin_pages/folder_conponent/EventList.vue");
+/* harmony import */ var _folder_conponent_EventFolderBase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./manage_conponent/EventFolderBase */ "./resources/js/admin_pages/manage_conponent/EventList.vue");
 /* harmony import */ var _submit_component_SubmitPhoto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save_component/SubmitPhoto */ "./resources/js/admin_pages/save_component/SubmitPhoto.vue");
 
 
@@ -2552,7 +2552,7 @@ Axios.defaults.headers['Accept'] = 'application/json'; // const params = new URL
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/EventFolderBase.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2561,7 +2561,7 @@ Axios.defaults.headers['Accept'] = 'application/json'; // const params = new URL
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Folder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder */ "./resources/js/admin_pages/folder_conponent/Folder.vue");
+/* harmony import */ var _Folder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder */ "./resources/js/admin_pages/manage_conponent/Folder.vue");
 /* harmony import */ var _submit_component_ThumbnailPhoto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../save_component/ThumbnailPhoto */ "./resources/js/admin_pages/save_component/ThumbnailPhoto.vue");
 
 
@@ -2724,7 +2724,7 @@ EventAxios.defaults.headers['Accept'] = 'application/json';
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2785,7 +2785,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2794,7 +2794,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Folder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder */ "./resources/js/admin_pages/folder_conponent/Folder.vue");
+/* harmony import */ var _Folder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder */ "./resources/js/admin_pages/manage_conponent/Folder.vue");
 /* harmony import */ var _submit_component_ThumbnailPhoto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../save_component/ThumbnailPhoto */ "./resources/js/admin_pages/save_component/ThumbnailPhoto.vue");
 
 
@@ -89366,15 +89366,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ "./resources/js/admin_pages/folder_conponent/EventFolderBase.vue":
 /*!***********************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/EventList.vue ***!
+  !*** ./resources/js/admin_pages/manage_conponent/EventList.vue ***!
   \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EventFolderBase_vue_vue_type_template_id_65740470_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EventList.vue?vue&type=template&id=65740470&scoped=true& */ "./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=template&id=65740470&scoped=true&");
-/* harmony import */ var _EventFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EventList.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EventFolderBase_vue_vue_type_template_id_65740470_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EventList.vue?vue&type=template&id=65740470&scoped=true& */ "./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=template&id=65740470&scoped=true&");
+/* harmony import */ var _EventFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EventList.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -89396,28 +89396,28 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin_pages/folder_conponent/EventList.vue"
+component.options.__file = "resources/js/admin_pages/manage_conponent/EventList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/EventFolderBase.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EventFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EventList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EventFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EventList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EventFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/EventFolderBase.vue?vue&type=template&id=65740470&scoped=true&":
 /*!******************************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/EventList.vue?vue&type=template&id=65740470&scoped=true& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/EventList.vue?vue&type=template&id=65740470&scoped=true& ***!
   \******************************************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -89432,16 +89432,16 @@ throw new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node
 
 /***/ "./resources/js/admin_pages/folder_conponent/Folder.vue":
 /*!**************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/Folder.vue ***!
+  !*** ./resources/js/admin_pages/manage_conponent/Folder.vue ***!
   \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Folder_vue_vue_type_template_id_309a2567_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Folder.vue?vue&type=template&id=309a2567&scoped=true& */ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=template&id=309a2567&scoped=true&");
-/* harmony import */ var _Folder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Folder_vue_vue_type_style_index_0_id_309a2567_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss& */ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss&");
+/* harmony import */ var _Folder_vue_vue_type_template_id_309a2567_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Folder.vue?vue&type=template&id=309a2567&scoped=true& */ "./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=template&id=309a2567&scoped=true&");
+/* harmony import */ var _Folder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Folder.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Folder_vue_vue_type_style_index_0_id_309a2567_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss& */ "./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -89464,28 +89464,28 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin_pages/folder_conponent/Folder.vue"
+component.options.__file = "resources/js/admin_pages/manage_conponent/Folder.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Folder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Folder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Folder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Folder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Folder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss&":
 /*!************************************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=style&index=0&id=309a2567&scoped=true&lang=scss& ***!
   \************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -89500,7 +89500,7 @@ throw new Error("Cannot find module '-!../../../../node_modules/style-loader/ind
 
 /***/ "./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=template&id=309a2567&scoped=true&":
 /*!*********************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/Folder.vue?vue&type=template&id=309a2567&scoped=true& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/Folder.vue?vue&type=template&id=309a2567&scoped=true& ***!
   \*********************************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -89515,15 +89515,15 @@ throw new Error("Cannot find module '-!../../../../node_modules/laravel-mix/node
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue":
 /*!***********************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue ***!
+  !*** ./resources/js/admin_pages/manage_conponent/ManageUserList.vue ***!
   \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PhotoFolderBase_vue_vue_type_template_id_2a90a608_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true&");
-/* harmony import */ var _PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PhotoFolderBase_vue_vue_type_template_id_2a90a608_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& */ "./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true&");
+/* harmony import */ var _PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ManageUserList.vue?vue&type=script&lang=js& */ "./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -89545,28 +89545,28 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin_pages/folder_conponent/ManageUserList.vue"
+component.options.__file = "resources/js/admin_pages/manage_conponent/ManageUserList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ManageUserList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ManageUserList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PhotoFolderBase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
 /***/ "./resources/js/admin_pages/folder_conponent/PhotoFolderBase.vue?vue&type=template&id=2a90a608&scoped=true&":
 /*!******************************************************************************************************************!*\
-  !*** ./resources/js/admin_pages/folder_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& ***!
+  !*** ./resources/js/admin_pages/manage_conponent/ManageUserList.vue?vue&type=template&id=2a90a608&scoped=true& ***!
   \******************************************************************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

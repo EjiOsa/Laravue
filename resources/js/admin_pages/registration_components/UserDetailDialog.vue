@@ -46,17 +46,17 @@
         },
         props:{
             detailDialog:{
-                type:Boolean
+                type: Boolean
             },
             detailData:{
-                type:Object
+                type: Object
             },
             tokenData:{
                 type: String,
                 required: true
             },
             userImages: {
-                type:Object
+                type: Object
             },
         },
         computed:{

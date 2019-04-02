@@ -42,9 +42,9 @@
                     lg4
             >
                 <!--align-self-centerで上下の中央揃え-->
-                <v-card>
+                <v-card color="blue-grey lighten-5">
                     <v-img :src="image.photo"></v-img>
-                    <v-card-actions>
+                    <v-card-actions class="pa-1">
                         <v-spacer></v-spacer>
                         <!--<v-btn icon @click="photoDetailOpen(image)">-->
                         <!--<v-icon>open_in_browser</v-icon>-->

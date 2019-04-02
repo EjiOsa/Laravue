@@ -71,7 +71,7 @@ export default {
     name: 'UserIterator',
     props: {
         users: {
-            type: Object
+            type: Array
         },
     },
     methods: {

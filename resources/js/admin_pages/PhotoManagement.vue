@@ -57,9 +57,9 @@
 </template>
 
 <script>
-    import ManageUserList from './folder_conponent/ManageUserList'
-    import ManageEventList from './folder_conponent/ManageEventList'
-    // import PhotoFolder from './folder_conponent/Folder'
+    import ManageUserList from './manage_conponent/ManageUserList'
+    import ManageEventList from './manage_conponent/ManageEventList'
+    // import PhotoFolder from './manage_conponent/Folder'
     // import ThumbnailPhoto from './save_component/ThumbnailPhoto'
 
     // const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/items';

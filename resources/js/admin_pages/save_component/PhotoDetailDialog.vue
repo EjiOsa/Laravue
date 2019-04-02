@@ -28,7 +28,7 @@
         name: "PhotoDetailDialog",
         props:{
             detailData:{
-             type:Object
+             type: Array
             }
         },
         data(){
