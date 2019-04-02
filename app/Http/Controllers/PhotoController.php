@@ -50,6 +50,7 @@ class PhotoController extends Controller
         $event = Event::find($photo->event_id);
 
         Photo::destroy($id);
+        Storage::disk('local')->delete('/sharing_photos/'.$photo->name);//ストレージないからも写真の削除
         //以下、イベントの写真保有数の調整。本来はEventPhotoRelationでやるべき。
         $event->photo_count = count($event->photos);
         $event->save();
