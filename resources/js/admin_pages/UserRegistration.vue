@@ -64,7 +64,7 @@
     // const params = new URLSearchParams();
 
     export default {
-    name: 'UserControl',
+    name: 'UserRegistration',
     props:{
         tokenData: {
             type: String,

@@ -18,7 +18,7 @@ Vue.use(VueRouter);
 const routes = [
     //Adminルート
     {
-        path: '/admin/registration',
+        path: '/admin/Registration',
         name: 'UserRegistration',
         component: Registration
     },

@@ -114,28 +114,31 @@
                 <v-spacer></v-spacer>
                 <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
             </v-toolbar>
+            <!--======左案内（ツールバーの下に記載してるので、右と違ってツールバーより上に表示される。）======-->
             <v-navigation-drawer
                     fixed
                     v-model="drawerLeft"
                     app
                     disable-resize-watcher
+                    width="200"
             >
-                <v-list dense>
-                    <v-list-tile @click.stop="left = !left">
-                        <v-list-tile-action>
-                            <v-icon>exit_to_app</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>Open Temporary Drawer</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                </v-list>
+                <!--<v-list dense>-->
+                    <!--<v-list-tile @click.stop="left = !left">-->
+                        <!--<v-list-tile-action>-->
+                            <!--<v-icon>exit_to_app</v-icon>-->
+                        <!--</v-list-tile-action>-->
+                        <!--<v-list-tile-content>-->
+                            <!--<v-list-tile-title>Open Temporary Drawer</v-list-tile-title>-->
+                        <!--</v-list-tile-content>-->
+                    <!--</v-list-tile>-->
+                <!--</v-list>-->
             </v-navigation-drawer>
-            <v-navigation-drawer
-                    temporary
-                    v-model="left"
-                    fixed
-            ></v-navigation-drawer>
+            <!--<v-navigation-drawer-->
+                    <!--temporary-->
+                    <!--v-model="left"-->
+                    <!--fixed-->
+            <!--&gt;</v-navigation-drawer>-->
+
             <!--======ルートページ======-->
             <v-content>
                 <v-container fluid>
@@ -237,14 +240,14 @@
                 drawerRight: true,
                 drawerLeft: false,
                 // right: null,
-                left: null,
+                // left: null,
             }
         },
         methods:{
             logout(){
                 if (confirm('ログアウトしますか？')) {
                     event.preventDefault();
-                    document.getElementById('admin-logout-form').submit();//これでadmin_topのを呼んでる。
+                    document.getElementById('admin-logout-form').submit();//これでbladeにあったadmin_topのメソッドを呼んでる。
                 }
             }
         },
@@ -257,6 +260,6 @@
 <!--
 ==================リファクタリング========================
 ・ログイン後とフォントと色を合わせる。色は合わせたけど、フォントはどこだろ？
-
+・左案内でログイン時の初期表示のページを選択できるようにする。現在のログイン先はセッションがある時はRegistration、ない時はHomeになっている。
 
 -->

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/admin/Home';//セッションがない時のログイン先
 
     /**
      * Create a new controller instance.
@@ -55,6 +55,6 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
 
-        return redirect('/admin/home');
+        return redirect('/admin/Registration');//セッションがある時のログイン先
     }
 }
