@@ -49,8 +49,18 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
+    protected function authenticated(Request $request, $user)//ログイン時にapi_tokenに乱数を登録
+    {
+        $user->api_token = str_random(60);
+        $user->save();
+    }
+
     public function logout(Request $request)
     {
+        $admin = $request->user();
+        $admin->api_token = null;//ログアウト時にapi_tokenをnullに変更。
+        $admin->save();
+
         Auth::guard('admin')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
