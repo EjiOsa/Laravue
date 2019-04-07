@@ -67,10 +67,15 @@
                             <v-card>
                                 <v-img :src="image.photo"></v-img>
                                 <v-card-actions class="pa-1">
-                                    <v-spacer></v-spacer>
                                     <!--<v-btn icon @click="">-->
                                         <!--<v-icon>edit</v-icon>-->
                                     <!--</v-btn>-->
+                                    <v-checkbox
+                                            v-model="selectedPreparePhotoId"
+                                            :value=image.unique
+                                    >
+                                    </v-checkbox>
+                                    <v-spacer></v-spacer>
                                     <v-btn icon @click="standByPhotoClear(image.unique)">
                                         <v-icon>clear</v-icon>
                                     </v-btn>
@@ -78,13 +83,28 @@
                             </v-card>
                         </v-flex>
                     </v-layout>
+                    <v-btn
+                            color="grey lighten-4"
+                            @click="photoRegistration"
+                    >
+                        Photo Registration
+                    </v-btn>
                     <v-layout justify-end>
                         <v-btn
-                                color="blue-grey lighten-4"
-                                @click="photoRegistration"
+                                color="grey lighten-4"
+                                @click="preparePhotoAllCheck"
                         >
-                            Photo Registration
-                        </v-btn>
+                            All Check</v-btn>
+                        <v-btn
+                                color="grey lighten-4"
+                                @click="preparePhotoCheckClear"
+                        >
+                            Check Clear</v-btn>
+                        <v-btn
+                                color="blue-grey lighten-3"
+                                @click="preparePhotoDelete"
+                        >
+                            StandBy Photo Delete</v-btn>
                     </v-layout>
                 </v-container>
                 <v-divider></v-divider>
@@ -110,6 +130,13 @@
                             <v-card>
                                 <v-img :src="image.photo"></v-img>
                                 <v-card-actions class="pa-1">
+<!--                                    <v-layout>-->
+                                    <v-checkbox
+                                            v-model="selectedKeepPhoto"
+                                            :value=image
+                                    >
+                                    </v-checkbox>
+<!--                                    </v-layout>-->
                                     <v-spacer></v-spacer>
                                     <v-btn icon @click="photoDetailOpen(image)">
                                         <v-icon>open_in_browser</v-icon>
@@ -120,6 +147,23 @@
                                 </v-card-actions>
                             </v-card>
                         </v-flex>
+                    </v-layout>
+                    <v-layout justify-end>
+                        <v-btn
+                                color="grey lighten-4"
+                                @click="keepPhotoAllCheck"
+                        >
+                            All Check</v-btn>
+                        <v-btn
+                                color="grey lighten-4"
+                                @click="keepPhotoCheckClear"
+                        >
+                            Check Clear</v-btn>
+                        <v-btn
+                                color="blue-grey lighten-3"
+                                @click="keepPhotoListDelete"
+                        >
+                            Check Photo Delete</v-btn>
                     </v-layout>
                 </v-container>
             </v-card>
@@ -166,6 +210,8 @@
                 photoDetailData: [],
                 photoSaveDialog: false,
                 prepareImages:[],
+                selectedPreparePhotoId:[],
+                selectedKeepPhoto:[],
             }
         },
         methods: {
@@ -235,6 +281,52 @@
                     this.$parent.eventImageGet(this.selectEvent.id);
                     this.$parent.eventReset();
                 }
+            },
+            //スタンバイの写真の一斉処理
+            preparePhotoDelete(){
+                for(let i = 0; i < this.selectedPreparePhotoId.length; i++){
+                    this.standByPhotoClear(this.selectedPreparePhotoId[i]);
+                }
+                this.selectedPreparePhotoId = [];
+            },
+            preparePhotoAllCheck(){
+                for (let i = 0; i < this.prepareImages.length; i++) {
+                    this.selectedPreparePhotoId.push(this.prepareImages[i].unique);
+                }
+            },
+            preparePhotoCheckClear(){
+                this.selectedPreparePhotoId = [];
+            },
+            //保存済み写真の一斉処理
+            async keepPhotoListDelete(){
+                if (confirm('チェックされた写真を削除します。よろしいですか？')) {
+                    if(this.selectedKeepPhoto.length>0){
+                    for (let i = 0; i < this.selectedKeepPhoto.length; i++) {
+                        PhotoAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
+                        await PhotoAxios.delete(PhotoUrl+'/'+this.selectedKeepPhoto[i].id)
+                            .then(
+                            )
+                            .catch(function (err) {
+                                alert(err);
+                            });
+                    }
+                    this.$parent.eventImages = {};
+                    this.$parent.eventImageGet(this.selectEvent.id);
+                    this.$parent.eventReset();
+                    this.selectedKeepPhoto = [];
+                    alert('photo delete ok');
+                }else{
+                        alert('写真が選択されていません。')
+                    }
+                }
+            },
+            keepPhotoAllCheck(){
+                for (let i = 0; i < this.eventImages.length; i++) {
+                    this.selectedKeepPhoto.push(this.eventImages[i])
+                }
+            },
+            keepPhotoCheckClear(){
+                this.selectedKeepPhoto = [];
             },
             //ドラッグ操作
             dragOver() {

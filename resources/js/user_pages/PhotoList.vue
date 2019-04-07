@@ -19,13 +19,13 @@
                 <!--align-self-centerで上下の中央揃え-->
                 <v-card>
                     <v-img :src="image.photo"></v-img>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
+                    <v-card-actions class="pa-1">
                         <v-checkbox
                                 v-model="selectedPhotoId"
                                 :value=image.id
                         >
                         </v-checkbox>
+                        <v-spacer></v-spacer>
                         <v-btn icon @click="photoDetailOpen(image)">
                             <v-icon>open_in_browser</v-icon>
                         </v-btn>
@@ -41,7 +41,24 @@
                 ref="detailDialog"
         >
         </detail-dialog>
-        <v-btn color="grey lighten-4" @click="photoDownLoad">Photo DownLoad</v-btn>
+        <v-btn
+                color="grey lighten-4"
+                @click="photoAllCheck"
+        >
+            All Check
+        </v-btn>
+        <v-btn
+                color="grey lighten-4"
+                @click="checkClear"
+        >
+            Clear Check
+        </v-btn>
+        <v-btn
+                color="grey lighten-4"
+                @click="photoDownLoad"
+        >
+            Photo DownLoad
+        </v-btn>
     </v-container>
 </template>
 
@@ -102,6 +119,15 @@
 
               this.selectedPhotoId = [];
             },
+            //写真の一斉処理
+            photoAllCheck(){
+                for (let i = 0; i < this.userImages.length; i++) {
+                    this.selectedPhotoId.push(this.userImages[i].id)
+                }
+            },
+            checkClear(){
+                this.selectedPhotoId = [];
+            }
         }
     }
 </script>
