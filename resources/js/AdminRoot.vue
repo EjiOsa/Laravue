@@ -13,7 +13,7 @@
                     width="220"
             >
                 <v-list dense>
-                    <v-list-tile to="/admin/home">
+                    <v-list-tile to="/admin/Home">
                         <v-list-tile-action>
                             <v-icon>home</v-icon>
                         </v-list-tile-action>
@@ -110,7 +110,7 @@
             >
                 <v-toolbar-side-icon @click.stop="drawerLeft = !drawerLeft"></v-toolbar-side-icon>
                 <!--<v-toolbar-title to="/admin/home">Admin Home</v-toolbar-title>-->
-                <v-btn to="/admin/home" flat large>Admin Home</v-btn>
+                <v-btn to="/admin/Home" flat large>Admin Home</v-btn>
                 <v-spacer></v-spacer>
                 <v-toolbar-side-icon @click.stop="drawerRight = !drawerRight"></v-toolbar-side-icon>
             </v-toolbar>

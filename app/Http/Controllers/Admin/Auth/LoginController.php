@@ -27,7 +27,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/Home';//セッションがない時のログイン先
 
     /**
      * Create a new controller instance.
@@ -49,13 +48,13 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
-    protected function authenticated(Request $request, $user)//ログイン時にapi_tokenに乱数を登録
+    protected function authenticated(Request $request, $user)//ログイン時処理
     {
-        $user->api_token = str_random(60);
+        $user->api_token = str_random(60);//api_tokenに乱数を登録
         $user->save();
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request)//通常のログアウト処理
     {
         $admin = $request->user();
         $admin->api_token = null;//ログアウト時にapi_tokenをnullに変更。
@@ -65,6 +64,9 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
 
-        return redirect('/admin/Registration');//セッションがある時のログイン先
+        return redirect('/admin/Registration');//セッションがある時のログイン先？
     }
+
+    protected $redirectTo = '/admin/Home';//セッションがない時のログイン先
+
 }

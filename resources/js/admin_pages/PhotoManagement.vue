@@ -113,7 +113,7 @@
         },
         methods: {
             remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
-                for(var i = 0; i < base.length ; i++){
+                for(let i = 0; i < base.length ; i++){
                     base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
                 }
                 data = base;

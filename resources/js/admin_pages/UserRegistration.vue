@@ -54,12 +54,12 @@
     import UserIterator from './registration_components/UserIterator';
     import UserDetailDialog from './registration_components/UserDetailDialog';
 
-    const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/users';
-    const Axios = require('axios').create({//axiosにapi_tokenを埋め込んでいる。
-        baseURL: ApiUrl,
+    const UsersApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/users';
+    const UsersAxios = require('axios').create({//axiosにapi_tokenを埋め込んでいる。
+        baseURL: UsersApiUrl,
         // responseType: 'json'//jsonがdefaultsのためコメントアウト
     });
-    Axios.defaults.headers['Accept'] =  'application/json';
+    UsersAxios.defaults.headers['Accept'] =  'application/json';
 
     // const params = new URLSearchParams();
 
@@ -100,8 +100,8 @@
     },
     // mounted () {
     created(){
-        Axios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;//ここでデフォルトを変更したら全てに反映されてもいいと思うけど違うらしい。下のaxiosにもつけないとエラーになる。
-        Axios.get()
+        UsersAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;//ここでデフォルトを変更したら全てに反映されてもいいと思うけど違うらしい。下のaxiosにもつけないとエラーになる。
+        UsersAxios.get()
             .then(response => (this.users = response.data));
     },
     methods: {
@@ -150,8 +150,8 @@
         },
         //Api method
         async userUpdate (data) {//ユーザー情報の更新
-            Axios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            await Axios.put(ApiUrl+'/'+data.id, data)
+            UsersAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+            await UsersAxios.put(UsersApiUrl+'/'+data.id, data)
                 .then(
                     alert('ユーザー情報の更新に成功しました')
                 )
@@ -161,8 +161,8 @@
             this.refresh()
         },
         async userRegistration () {//Userの追加
-            Axios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            await Axios.post('', this.editUser)
+            UsersAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+            await UsersAxios.post('', this.editUser)
                 .then(
                     alert('user add ok')
                 )
@@ -172,8 +172,8 @@
             this.refresh()//thenの中に書いて不安定になってたけど、ここにして安定した。
         },
         async softDelete (id) {//Userの論理削除、Deleted_atにTimeStamp入力
-            Axios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            await Axios.delete(ApiUrl+'/'+id)
+            UsersAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+            await UsersAxios.delete(UsersApiUrl+'/'+id)
                 .then(
                     alert('user softDeleted ok')
                 )
@@ -183,8 +183,8 @@
             this.refresh()
         },
         refresh (){//Api処理後の再表示
-            Axios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            Axios.get()
+            UsersAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
+            UsersAxios.get()
                 .then(response => (
                     this.users = response.data
                 ))
@@ -193,7 +193,7 @@
                 ));
         },
         remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
-            for(var i = 0; i < base.length ; i++){
+            for(let i = 0; i < base.length ; i++){
                 base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
             }
             data = base;

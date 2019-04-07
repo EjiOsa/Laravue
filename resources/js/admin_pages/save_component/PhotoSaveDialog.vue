@@ -66,7 +66,7 @@
                         >
                             <v-card>
                                 <v-img :src="image.photo"></v-img>
-                                <v-card-actions>
+                                <v-card-actions class="pa-1">
                                     <v-spacer></v-spacer>
                                     <!--<v-btn icon @click="">-->
                                         <!--<v-icon>edit</v-icon>-->
@@ -78,7 +78,14 @@
                             </v-card>
                         </v-flex>
                     </v-layout>
-                    <v-btn color="blue-grey lighten-4" @click="photoRegistration">Photo Registration</v-btn>
+                    <v-layout justify-end>
+                        <v-btn
+                                color="blue-grey lighten-4"
+                                @click="photoRegistration"
+                        >
+                            Photo Registration
+                        </v-btn>
+                    </v-layout>
                 </v-container>
                 <v-divider></v-divider>
 　　　　　　　　　　<!--保存済み写真-->
@@ -102,7 +109,7 @@
                             <!--align-self-centerで上下の中央揃え-->
                             <v-card>
                                 <v-img :src="image.photo"></v-img>
-                                <v-card-actions>
+                                <v-card-actions class="pa-1">
                                     <v-spacer></v-spacer>
                                     <v-btn icon @click="photoDetailOpen(image)">
                                         <v-icon>open_in_browser</v-icon>
@@ -181,7 +188,7 @@
                 let files = e.target.files || e.dataTransfer.files;//inputのファイル（画像）はfileListって名前のオブジェクトで渡される。
                 //targetはinputタグから取得の画像、dataTransferはdropからの画像。
                 if (files.length) {
-                    for (var i = 0; i < files.length; i++) {//fileListを渡した先の関数で展開しようとすると、非同期のために（？）展開が先に走って画像が出ない。
+                    for (let i = 0; i < files.length; i++) {//fileListを渡した先の関数で展開しようとすると、非同期のために（？）展開が先に走って画像が出ない。
                         this.imageStandBy(files[i]);//先にこっちで展開して、関数はデータの処理に専念させる。
                     }
                 }
@@ -208,7 +215,7 @@
                     alert('写真が選択されていません。');
                 } else {
                     //prepareImagesに中身がある時
-                    for (var i = 0; i < len; i++) {
+                    for (let i = 0; i < len; i++) {
                         formData.append('photo' + i, this.prepareImages[i].uploadFile);
                     }
                     formData.append('len', len);
