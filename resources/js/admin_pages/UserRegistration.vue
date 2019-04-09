@@ -239,6 +239,7 @@
         openDrawer(){//右側の登録画面
             this.clearEdit();
             this.$refs.registration.$validator.reset();
+            this.detailDialog = false;
             this.right = true;
         },
         userDialogOpen(item){//UserDetailDialogの表示

@@ -87,9 +87,9 @@
         },
         data () {
             return {
-                userImages:{},
+                userImages: {},
                 photoDetailData: [],
-                selectedPhotoId:[],
+                selectedPhotoId: [],
             }
         },
         async created(){

@@ -12,7 +12,7 @@
                                     <v-text-field
                                             v-model="newEvent.name"
                                             clearable
-                                            v-validate="'required||is_not:{eventNameList}'"
+                                            v-validate="'required|is_not:{{this.eventNameList}}'"
                                             :error-messages="errors.collect('イベント名')"
                                             label="New Event Name*"
                                             data-vv-name="イベント名"
