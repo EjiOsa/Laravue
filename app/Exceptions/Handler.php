@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof TokenMismatchException){// csrfエラー（timeout時）だった場合の処理
             session()->flash('csrfError', true);
-            return redirect()->to(route('admin.login'));//timeout後は全ルートがadminになってしまう。
+            return redirect()->to(route('login'));//timeout後は全ルートがuserになってしまう。adminは自分で操作させる。
         }
         return parent::render($request, $exception);
     }
