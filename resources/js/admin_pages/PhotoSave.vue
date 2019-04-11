@@ -80,16 +80,8 @@
                 eventImages:{},
             };
         },
-        async mounted () {
-            EventAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
-            await EventAxios.get()
-                .then(response => (
-                    this.eventList = response.data
-                ));
-            let l = this.eventList.length;
-            for(let i=0; i<l; ++i){
-                this.eventNameList.push(this.eventList[i].name)
-            }
+        mounted () {
+            this.eventNameListReset();
         },
         methods: {
             //イベント名の更新
@@ -103,6 +95,7 @@
                         alert(err)
                     });
                 this.eventReset();
+                this.eventNameListReset();
             },
             //イベントの追加
             async eventRegistration(){
@@ -115,6 +108,7 @@
                         alert(err)
                     });
                 this.$refs.eventFolder.listUpload();
+                this.eventNameListReset();
             },
             //イベントの削除
             async eventDelete(id){
@@ -127,6 +121,7 @@
                                 alert(err)
                     });
                 this.$refs.eventFolder.listUpload();
+                this.eventNameListReset();
             },
             //イベント名の編集振り分け
             eventAddition () {
@@ -139,6 +134,19 @@
                     if (confirm('イベントを追加しますか？')) {
                         this.eventRegistration();
                     }
+                }
+            },
+            //イベント名リストのリセット
+            async eventNameListReset(){
+                this.eventNameList.length = 0;
+                EventAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
+                await EventAxios.get()
+                    .then(response => (
+                        this.eventList = response.data
+                    ));
+                let l = this.eventList.length;
+                for(let i=0; i<l; ++i){
+                    this.eventNameList.push(this.eventList[i].name)
                 }
             },
             //DiaLog Event Open

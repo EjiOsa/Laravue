@@ -12,7 +12,7 @@
                                     <v-text-field
                                             v-model="newEvent.name"
                                             clearable
-                                            v-validate="'required|is_not:{{this.eventNameList}}'"
+                                            v-validate="{excluded:eventNameList}"
                                             :error-messages="errors.collect('イベント名')"
                                             label="New Event Name*"
                                             data-vv-name="イベント名"
@@ -40,7 +40,7 @@
             newEvent:{
                 type: Object
             },
-            eventNameList:{//||is_not:eventNameListとしたい。
+            eventNameList:{
                 type: Array
             }
         },
