@@ -14,7 +14,7 @@ UIコンポーネント：Vuetify
 
 ## ER図
 schemespyで作成  
-![](https://github.com/EjiOsa/Laravue/issues/1#issue-431906262 "")
+![ER図](https://github.com/EjiOsa/Laravue/issues/1#issue-431906262 "")
 
 ## バックエンド
 ### マルチ認証
