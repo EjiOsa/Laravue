@@ -14,7 +14,7 @@ UIコンポーネント：Vuetify
 
 ## ER図
 schemespyで作成  
-![](https://user-images.githubusercontent.com/4255233/55944157-ed678880-5c82-11e9-8884-74fb416d63f0.jpg "")
+![](https://user-images.githubusercontent.com/4255233/56089520-2005c100-5ecf-11e9-8c1c-661d42f46815.jpg "")
 ## バックエンド
 ### マルチ認証
 
