@@ -62,26 +62,25 @@
                     <!--type="checkbox"-->
                     <!--required-->
             <!--&gt;</v-checkbox>-->
-
+        </v-form>
             <v-layout row>
-                <v-flex xs12 offset-xs8>
+                <v-flex xs1 offset-xs8>
                     <v-btn @click="clear" >clear</v-btn>
                 </v-flex>
-            </v-layout>
-            <v-layout row>
+<!--            </v-layout>-->
+<!--            <v-layout row>-->
                 <v-flex xs1 offset-xs4>
                     <v-btn @click="addUser" v-show="editData.edit === true">edit</v-btn>
                 </v-flex>
                 <v-flex xs1 offset-xs3>
                     <v-btn @click="delUser" v-show="editData.edit === true">delete</v-btn>
                 </v-flex>
-            </v-layout>
-            <v-layout row>
+<!--            </v-layout>-->
+<!--            <v-layout row>-->
                 <v-flex xs1 offset-xs8>
                     <v-btn @click="addUser" v-show="editData.edit === false">add</v-btn>
                 </v-flex>
             </v-layout>
-        </v-form>
     </v-container>
     <!--<div class="split-box right-box">-->
         <!--<div class="contents">-->
