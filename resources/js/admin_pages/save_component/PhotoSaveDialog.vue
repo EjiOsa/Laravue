@@ -42,6 +42,7 @@
                                 accept="image/*"
                                 @change="onFileChange($event)"
                                 ref="inputUpload"
+                                v-if="inputFileReset"
                                 v-show="false">
                     </v-btn>
                 </v-container>
@@ -212,6 +213,7 @@
                 prepareImages:[],
                 selectedPreparePhotoId:[],
                 selectedKeepPhoto:[],
+                inputFileReset: true,
             }
         },
         methods: {
@@ -238,6 +240,11 @@
                         this.imageStandBy(files[i]);//先にこっちで展開して、関数はデータの処理に専念させる。
                     }
                 }
+                //以下、同じファイルを選択可能にするため再レンダリング。
+                this.inputFileReset = false;
+                this.$nextTick(function () {
+                    this.inputFileReset = true;
+                });
             },
             imageStandBy(file) {
                 let reader = new FileReader();
@@ -376,6 +383,5 @@
 ・ドラッグ＆ドロップのデザインを考える。
 ・<v-divider dark></v-divider>で上端のスペースを確保。なんか間違ってる。
 ・229行目の関数は今後の課題。
-・画像選択で同じものを選択する（複数でも）と反応しない。
 ・selectボタンたちは中央に、registrationボタンは右寄せにする。
 -->
