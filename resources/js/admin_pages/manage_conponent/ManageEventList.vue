@@ -147,6 +147,7 @@
                 this.$parent.eventImages =[];
                 this.selectedMovePhotoId = [];
             },
+            //イベント写真の一括チェック処理
             movePhotoAllCheck(){
                 for (let i = 0, l = this.eventImages.length; i < l; i++) {
                     this.selectedMovePhotoId.push(this.eventImages[i])

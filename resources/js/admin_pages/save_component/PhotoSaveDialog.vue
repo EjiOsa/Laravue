@@ -307,8 +307,8 @@
             //保存済み写真の一斉処理
             async keepPhotoListDelete(){
                 if (confirm('チェックされた写真を削除します。よろしいですか？')) {
-                    if(this.selectedKeepPhoto.length>0){
-                    for (let i = 0; i < this.selectedKeepPhoto.length; i++) {
+                    if(this.selectedKeepPhoto.length){
+                    for (let i = 0, l = this.selectedKeepPhoto.length; i < l; i++) {
                         PhotoAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
                         await PhotoAxios.delete(PhotoUrl+'/'+this.selectedKeepPhoto[i].id)
                             .then(

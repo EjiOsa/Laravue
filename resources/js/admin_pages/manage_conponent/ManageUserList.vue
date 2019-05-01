@@ -32,6 +32,14 @@
             </v-flex>
         </v-layout>
         <v-layout row wrap>
+            <v-card color="blue-grey lighten-5" v-show="!showList" min-width="500">
+                <v-card-title primary-title>
+                    <div>
+                        <div class="headline">Drop Here</div>
+                        <span>Please drop photos here to subscribe to the user.</span>
+                    </div>
+                </v-card-title>
+            </v-card>
             <v-flex
                     v-for="image in userImages"
                     :key="image.id"
@@ -46,7 +54,7 @@
                     <v-img :src="image.photo"></v-img>
                     <v-card-actions class="px-1 py-0">
                         <v-checkbox
-                                v-model="selectedDeletePhotoId"
+                                v-model="selectedDeletePhoto"
                                 :value=image
                                 class="pa-0 ma-1"
                         >
@@ -65,6 +73,7 @@
                     </v-card-actions>
                 </v-card>
             </v-flex>
+
         </v-layout>
         <v-layout justify-end>
             <v-btn
@@ -128,7 +137,7 @@
                 showList: true,
                 listTitle:'',
                 selectUserId:'',
-                selectedDeletePhotoId:[],
+                selectedDeletePhoto:[],
             };
         },
         async mounted () {
@@ -182,9 +191,9 @@
             backList(){
                 this.showList = true;
                 this.$parent.userImages = [];
-                this.selectedDeletePhotoId = [];
+                this.selectedDeletePhoto = [];
             },
-            //ユーザーの写真削除
+            //ユーザー写真の単独削除
             async userPhotoDelete(image){
                 PhotoUserAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
                 await PhotoUserAxios.put(PhotoUserUrl+'/'+this.selectUserId, image)
@@ -198,20 +207,35 @@
                 this.$emit('open-user-photo', this.selectUserId);
                 this.userListUpload();
             },
-            //ユーザーの写真チェック
+            //ユーザー写真の一括チェック処理
             deletePhotoAllCheck(){
                 for (let i = 0, l = this.userImages.length; i < l; i++) {
-                    this.selectedDeletePhotoId.push(this.userImages[i])
+                    this.selectedDeletePhoto.push(this.userImages[i])
                 }
             },
             deletePhotoCheckClear(){
-                this.selectedDeletePhotoId = [];
+                this.selectedDeletePhoto = [];
             },
-            checkPhotoDelete(){
-                if(this.selectedDeletePhotoId.length){
-                    if (confirm('チェックされた写真を削除します。よろしいですか？')) {
-
+            //ユーザー写真の複数削除
+            async　checkPhotoDelete(){
+                if (confirm('チェックされた写真を削除します。よろしいですか？')) {
+                    if(this.selectedDeletePhoto.length){
+                    for(let i = 0,l = this.selectedDeletePhoto.length; i < l; i++){
+                        PhotoUserAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
+                        await PhotoUserAxios.put(PhotoUserUrl+'/'+this.selectUserId, this.selectedDeletePhoto[i])
+                            .then(
+                            )
+                            .catch(function (err) {
+                                alert(err);
+                            });
                     }
+                        this.$parent.userImages = [];
+                        this.$emit('open-user-photo', this.selectUserId);
+                        this.userListUpload();
+                        alert('photo delete ok');
+                    }
+                }else{
+                    alert('写真が選択されていません。')
                 }
             },
         },

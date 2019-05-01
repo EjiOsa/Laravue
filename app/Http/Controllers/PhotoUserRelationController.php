@@ -21,7 +21,7 @@ class PhotoUserRelationController extends Controller
         return response($photos_data);
     }
 
-    public function store(Request $request)//ユーザーへの写真の紐付け
+    public function store(Request $request)//ユーザーへの写真の紐付け(紐付けに関してはバック側で配列処理にしている。)
     {
         $user_id = $request->get('user_id');
         $move_photo_id_list = array_map('intval',explode(",", $request->get('move_id_str')));
@@ -40,7 +40,7 @@ class PhotoUserRelationController extends Controller
         $user->save();
     }
 
-    public function update(Request $request, $id)//ユーザーからの写真削除
+    public function update(Request $request, $id)//ユーザーからの写真削除(削除に関しては配列で受け取らずに、フロント側でforで回している。)
     {
         $delete_photo_id[] = $request->id;
         $user = User::find($id);
