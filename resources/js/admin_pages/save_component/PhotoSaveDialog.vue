@@ -328,7 +328,7 @@
                 }
             },
             keepPhotoAllCheck(){
-                for (let i = 0; i < this.eventImages.length; i++) {
+                for (let i = 0, l= this.eventImages.length; i < l; i++) {
                     this.selectedKeepPhoto.push(this.eventImages[i])
                 }
             },
@@ -382,6 +382,5 @@
 ===============リファクタリング===============
 ・ドラッグ＆ドロップのデザインを考える。
 ・<v-divider dark></v-divider>で上端のスペースを確保。なんか間違ってる。
-・229行目の関数は今後の課題。
-・selectボタンたちは中央に、registrationボタンは右寄せにする。
+・345行目付近のコールバック関数は今後の課題。
 -->

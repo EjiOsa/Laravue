@@ -44,7 +44,13 @@
                 <!--align-self-centerで上下の中央揃え-->
                 <v-card color="blue-grey lighten-5">
                     <v-img :src="image.photo"></v-img>
-                    <v-card-actions class="pa-1">
+                    <v-card-actions class="px-1 py-0">
+                        <v-checkbox
+                                v-model="selectedDeletePhotoId"
+                                :value=image
+                                class="pa-0 ma-1"
+                        >
+                        </v-checkbox>
                         <v-spacer></v-spacer>
                         <!--<v-btn icon @click="photoDetailOpen(image)">-->
                         <!--<v-icon>open_in_browser</v-icon>-->
@@ -60,40 +66,34 @@
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-btn
-                color="blue-grey lighten-4"
-                @click="backList"
-                v-show="!showList"
-        >Back to User List</v-btn>
+        <v-layout justify-end>
+            <v-btn
+                    color="grey lighten-4"
+                    @click="deletePhotoAllCheck"
+                    v-show="!showList"
+            >All Check</v-btn>
+            <v-btn
+                    color="grey lighten-4"
+                    @click="deletePhotoCheckClear"
+                    v-show="!showList"
+            >Check Clear</v-btn>
+            <v-btn
+                    color="blue-grey lighten-1"
+                    @click="checkPhotoDelete"
+                    v-show="!showList"
+            >Check Photo Delete</v-btn>
+        </v-layout>
+        <v-layout justify-end>
+            <v-btn
+                    color="blue-grey lighten-4"
+                    @click="backList"
+                    v-show="!showList"
+            >Back to User List</v-btn>
+        </v-layout>
     </v-container>
-    <!--<div>-->
-        <!--<ul>-->
-            <!--<thumbnail-photo-->
-                    <!--v-for="image in userImages"-->
-                    <!--:key="image.name"-->
-                    <!--:image="image"-->
-                    <!--v-show="!showFolder"-->
-            <!--&gt;</thumbnail-photo>-->
-        <!--</ul>-->
-        <!--<ul>-->
-            <!--<folder-->
-                    <!--v-for="user in users"-->
-                    <!--:key="user.id"-->
-                    <!--:folderData="user"-->
-                    <!--v-show="showFolder"-->
-                    <!--@image = "userImage"-->
-            <!--&gt;</folder>-->
-        <!--</ul>-->
-        <!--<div>-->
-            <!--<button class="" @click.prevent="backList" v-show="!showFolder">メンバーリストに戻る</button>-->
-        <!--</div>-->
-    <!--</div>-->
 </template>
 
 <script>
-    // import Folder from './Folder'
-    // import ThumbnailPhoto from '../../../../ゴミ箱/ThumbnailPhoto'
-
     const PhotoUserUrl = 'http://localhost/photo_share/laravue_test1/public/api/photo_user_relation';
     const PhotoUserAxios = require('axios').create({
         baseURL: PhotoUserUrl,
@@ -128,6 +128,7 @@
                 showList: true,
                 listTitle:'',
                 selectUserId:'',
+                selectedDeletePhotoId:[],
             };
         },
         async mounted () {
@@ -142,24 +143,33 @@
                 await UserAxios.get()
                     .then(response => (this.users = response.data));
             },
+            // //dataTransferは文字列のみらしいので、ここで文字列をリストに変換。でも、配列はFormDataで送れないので今回は使用せず。
+            // makeUserIdList(photoStrId){
+            //     return  photoStrId.replace(/,$/,'').split(/,/);
+            // },
             //ドロップ
             async photoDrop(user){
-                let photoId = event.dataTransfer.getData("text");
                 let userId = user.id;
+                let photoId = event.dataTransfer.getData("text");
                 let formData = new FormData();
 
-                formData.append('user_id', userId);
-                formData.append('photo_id', photoId);
+                if (!photoId) {
+                    //写真のチェックがないままドロップした時
+                    alert('写真が選択されていません。');
+                } else {
+                    formData.append('user_id', userId);
+                    formData.append('move_id_str', photoId);//FormDataには配列は渡せないのでそのまま文字列で。
 
-                PhotoUserAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
-                await PhotoUserAxios.post('', formData)
-                    .then(
-                        alert('photo relation ok'),
-                    )
-                    .catch(function (err) {
-                        alert(err);
-                    });
-                this.userListUpload();
+                    PhotoUserAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
+                    await PhotoUserAxios.post('', formData)
+                        .then(
+                            alert('photo relation ok'),
+                        )
+                        .catch(function (err) {
+                            alert(err);
+                        });
+                    this.userListUpload();
+                }
             },
             //ユーザーの画像表示
             openUserPhoto(user){
@@ -172,6 +182,7 @@
             backList(){
                 this.showList = true;
                 this.$parent.userImages = [];
+                this.selectedDeletePhotoId = [];
             },
             //ユーザーの写真削除
             async userPhotoDelete(image){
@@ -186,8 +197,23 @@
                 this.$parent.userImages = [];
                 this.$emit('open-user-photo', this.selectUserId);
                 this.userListUpload();
-            }
+            },
+            //ユーザーの写真チェック
+            deletePhotoAllCheck(){
+                for (let i = 0, l = this.userImages.length; i < l; i++) {
+                    this.selectedDeletePhotoId.push(this.userImages[i])
+                }
+            },
+            deletePhotoCheckClear(){
+                this.selectedDeletePhotoId = [];
+            },
+            checkPhotoDelete(){
+                if(this.selectedDeletePhotoId.length){
+                    if (confirm('チェックされた写真を削除します。よろしいですか？')) {
 
+                    }
+                }
+            },
         },
     }
 </script>

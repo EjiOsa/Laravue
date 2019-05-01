@@ -45,25 +45,38 @@
                     <v-img
                             :src="image.photo"
                             draggable="true"
-                            @dragstart="movePhoto(image)"
+                            @dragstart="movePhoto(selectedMovePhotoId)"
                     ></v-img>
-                    <!--<v-card-actions>-->
-                        <!--<v-spacer></v-spacer>-->
-                        <!--<v-btn icon @click="photoDetailOpen(image)">-->
-                            <!--<v-icon>open_in_browser</v-icon>-->
-                        <!--</v-btn>-->
-                        <!--<v-btn icon @click="keepPhotoDelete(image)">-->
-                            <!--<v-icon>delete</v-icon>-->
-                        <!--</v-btn>-->
-                    <!--</v-card-actions>-->
+                    <v-card-actions class="px-1 py-0">
+                        <v-checkbox
+                                v-model="selectedMovePhotoId"
+                                :value=image
+                                class="pa-0 ma-1"
+                        >
+                        </v-checkbox>
+                    </v-card-actions>
                 </v-card>
             </v-flex>
         </v-layout>
-        <v-btn
-                color="blue-grey lighten-4"
-                @click="backList"
-                v-show="!showList"
-        >Back to Event List</v-btn>
+        <v-layout justify-end>
+            <v-btn
+                    color="grey lighten-4"
+                    @click="movePhotoAllCheck"
+                    v-show="!showList"
+            >All Check</v-btn>
+            <v-btn
+                    color="grey lighten-4"
+                    @click="movePhotoCheckClear"
+                    v-show="!showList"
+            >Check Clear</v-btn>
+        </v-layout>
+        <v-layout justify-end>
+            <v-btn
+                    color="blue-grey lighten-4"
+                    @click="backList"
+                    v-show="!showList"
+            >Back to Event List</v-btn>
+        </v-layout>
     </v-container>
 </template>
 
@@ -99,6 +112,7 @@
                 events:{},
                 showList: true,
                 listTitle:'',
+                selectedMovePhotoId:[],
             };
         },
         async mounted () {
@@ -113,8 +127,13 @@
         },
         methods: {
             //ドラッグスタート処理
-            movePhoto(image){
-                event.dataTransfer.setData("text", image.id);
+            movePhoto(ids){
+                let idStrList = '';
+                for(let i=0, l=ids.length; i<l; i++){
+                    idStrList = idStrList+(ids[i].id)+',';
+                }
+                idStrList = idStrList.replace(/,$/,'');
+                event.dataTransfer.setData("text", idStrList);
             },
             //ダブルクリック処理
             openEventPhoto(event){
@@ -126,51 +145,16 @@
             backList(){
                 this.showList =true;
                 this.$parent.eventImages =[];
+                this.selectedMovePhotoId = [];
             },
-
-            // remakeData(base, data){//data:image/jpeg;base64がない状態で送られてくるので、ここで追加。
-            //     for(var i = 0; i < base.length ; i++){
-            //         base[i].photo = 'data:image/jpeg;base64,'+base[i].photo;//リファクタリング
-            //     }
-            //     data = base;
-            // },
-            // async eventImage(event_id){
-            //     this.showFolder = false;
-            //     const EventPhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/event_photo_relation/'+event_id;
-            //     const EventPhotoAxios = require('axios').create({
-            //         baseURL: EventPhotoUrl,
-            //     });
-            //     EventPhotoAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            //     await EventPhotoAxios.get()
-            //         .then(response => (this.eventImages = response.data));
-            //     this.remakeData(this.eventImages, this.eventImages);
-            // },
-            // backList(){
-            //     this.showFolder = true;
-            //     this.eventImages = [];
-            // },
-            //
-            // listUpload(){
-            //     EventAxios.defaults.headers['Authorization'] = 'Bearer '+this.tokenNo;
-            //     EventAxios.get()
-            //         .then(response => (
-            //             this.events = response.data
-            //         ));
-            // },
-            // eventDelete(id){
-            //     if (confirm('イベントを削除しますか？')) {
-            //         if (confirm('本当にイベントを削除しますか？\nイベント内の画像も削除されます。')) {
-            //             if (confirm('このイベントからユーザーへ渡した画像も削除されます。\nイベントを削除しますか？')) {
-            //                 this.$emit('event-delete', id);
-            //             }
-            //         }
-            //     }
-            // },
-            // eventEdit(event){
-            //     if (confirm('イベント名を編集しますか？')) {
-            //         this.$emit('event-edit', event);
-            //     }
-            // },
+            movePhotoAllCheck(){
+                for (let i = 0, l = this.eventImages.length; i < l; i++) {
+                    this.selectedMovePhotoId.push(this.eventImages[i])
+                }
+            },
+            movePhotoCheckClear(){
+                this.selectedMovePhotoId = [];
+            },
         },
     }
 </script>
@@ -182,5 +166,5 @@
 <!--
 ==================リファクタリング==================
 ・イベント内の写真リストの大きさを調整
-
+・チェックされた写真たちをドラッグ時に表示させたい。アニメーションさせたい。
 -->

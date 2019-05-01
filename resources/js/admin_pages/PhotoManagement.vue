@@ -20,66 +20,18 @@
             </v-layout>
         </v-container>
     </div>
-            <!--<ul>-->
-            <!--<thumbnail-photo-->
-                    <!--v-for="image in userImages"-->
-                    <!--:key="image.name"-->
-                    <!--:image="image"-->
-                    <!--v-show="!showFolder"-->
-            <!--&gt;</thumbnail-photo>-->
-        <!--</ul>-->
-        <!--<ul>-->
-            <!--<photo-folder-->
-                    <!--v-for="user in users"-->
-                    <!--:key="user.id"-->
-                    <!--:folderData="user"-->
-                    <!--v-show="showFolder"-->
-                    <!--@userImage = "userImage"-->
-            <!--&gt;</photo-folder>-->
-        <!--</ul>-->
-        <!--<div>-->
-            <!--<photo-folder-base-->
-                    <!--:token-data="tokenData"-->
-            <!--&gt;</photo-folder-base>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<event-folder-base-->
-                    <!--:token-data="tokenData"-->
-            <!--&gt;</event-folder-base>-->
-        <!--</div>-->
-        <!--<ul>-->
-            <!--<thumbnail-photo-->
-                    <!--v-for="image in images"-->
-                    <!--:key="image.name"-->
-                    <!--:image="image"-->
-            <!--&gt;</thumbnail-photo>-->
-        <!--</ul>-->
+
 </template>
 
 <script>
     import ManageUserList from './manage_conponent/ManageUserList'
     import ManageEventList from './manage_conponent/ManageEventList'
-    // import PhotoFolder from './manage_conponent/Folder'
-    // import ThumbnailPhoto from './save_component/ThumbnailPhoto'
-
-    // const ApiUrl = 'http://localhost/photo_share/laravue_test1/public/api/items';
-    // const ApiAxios = require('axios').create({
-    //     baseURL: ApiUrl,
-    // });
-    // ApiAxios.defaults.headers['Accept'] = 'application/json';
-
-    // const PhotoUrl = 'http://localhost/photo_share/laravue_test1/public/api/photos';
-    // const PhotoAxios = require('axios').create({
-    //     baseURL: PhotoUrl,
-    // });
 
     export default {
         name: "PhotoManagement",
         components:{
             ManageUserList,
             ManageEventList,
-            // Folder,
-            // ThumbnailPhoto,
         },
         props:{
             tokenData: {
@@ -96,9 +48,6 @@
             return {
                 eventImages:[],
                 userImages: [],
-                // images: [],
-                // users:[],
-                // showFolder: true,
             };
         },
         async mounted () {
@@ -152,25 +101,13 @@
     }
 </script>
 
-<style scoped>
-    /*.split-box{*/
-        /*display: table;*/
-        /*position: absolute;*/
-        /*width: 50%;*/
-        /*height: 100%;*/
-    /*}*/
-
-    /*.left-box {*/
-        /*!*width:50%;*!*/
-        /*left:0;*/
-        /*overflow-y:scroll;*/
-    /*}*/
-
-    /*.right-box {*/
-        /*!*width:50%;*!*/
-        /*right:0;*/
-        /*!*overflow-y:scroll;*!*/
-    /*}*/
+<style>
+    .v-input--selection-controls:not(.v-input--hide-details) .v-input__slot{
+        margin-bottom: -12px;
+    }
+    .v-messages{
+        position: unset;
+    }
 </style>
 
 <!--
