@@ -17,7 +17,7 @@
             >
                 <v-card
                         @dblclick=openUserPhoto(user)
-                        @drop.prevent="photoDrop(user)"
+                        @drop.prevent="photoDrop(user.id)"
                 >
                     <!--<span class="headline black&#45;&#45;text" v-text="user.first_name"></span>-->
                     <v-card-title><h5>{{user.first_name}}</h5></v-card-title>
@@ -31,15 +31,20 @@
                 </v-card>
             </v-flex>
         </v-layout>
+        <v-card
+                color="blue-grey lighten-5"
+                v-show="!showList"
+                min-width="500"
+                @drop.prevent="photoDrop(selectUserId)"
+        >
+            <v-card-title primary-title>
+                <div>
+                    <div class="headline">Drop Here</div>
+                    <span>Please drop photos here to subscribe to the user.</span>
+                </div>
+            </v-card-title>
+        </v-card>
         <v-layout row wrap>
-            <v-card color="blue-grey lighten-5" v-show="!showList" min-width="500">
-                <v-card-title primary-title>
-                    <div>
-                        <div class="headline">Drop Here</div>
-                        <span>Please drop photos here to subscribe to the user.</span>
-                    </div>
-                </v-card-title>
-            </v-card>
             <v-flex
                     v-for="image in userImages"
                     :key="image.id"
@@ -157,8 +162,7 @@
             //     return  photoStrId.replace(/,$/,'').split(/,/);
             // },
             //ドロップ
-            async photoDrop(user){
-                let userId = user.id;
+            async photoDrop(userId){
                 let photoId = event.dataTransfer.getData("text");
                 let formData = new FormData();
 
@@ -177,6 +181,11 @@
                         .catch(function (err) {
                             alert(err);
                         });
+                    this.userListUpload();
+                }
+                if(this.selectUserId){
+                    this.$parent.userImages = [];
+                    this.$emit('open-user-photo', this.selectUserId);
                     this.userListUpload();
                 }
             },
@@ -233,6 +242,7 @@
                         this.$emit('open-user-photo', this.selectUserId);
                         this.userListUpload();
                         alert('photo delete ok');
+                        this.deletePhotoCheckClear();
                     }
                 }else{
                     alert('写真が選択されていません。')
