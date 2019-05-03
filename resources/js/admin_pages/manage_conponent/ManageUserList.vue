@@ -166,10 +166,11 @@
                 let photoId = event.dataTransfer.getData("text");
                 let formData = new FormData();
 
-                if (!photoId) {
+                // if (!photoId) {
                     //写真のチェックがないままドロップした時
-                    alert('写真が選択されていません。');
-                } else {
+                    // alert('写真が選択されていません。');//ドロップの開始時でのアラートに変更
+                // } else {
+                if (photoId){
                     formData.append('user_id', userId);
                     formData.append('move_id_str', photoId);//FormDataには配列は渡せないのでそのまま文字列で。
 
@@ -183,6 +184,7 @@
                         });
                     this.userListUpload();
                 }
+                //ユーザー画面を開いている場合は内容をリセット表示
                 if(this.selectUserId){
                     this.$parent.userImages = [];
                     this.$emit('open-user-photo', this.selectUserId);

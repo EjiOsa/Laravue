@@ -128,12 +128,17 @@
         methods: {
             //ドラッグスタート処理
             movePhoto(ids){
-                let idStrList = '';
-                for(let i=0, l=ids.length; i<l; i++){
-                    idStrList = idStrList+(ids[i].id)+',';
+                if (!ids.length) {
+                    //写真のチェックがないままドロップした時
+                    alert('写真が選択されていません。');//ドロップの開始時でアラート設定
+                } else {
+                    let idStrList = '';
+                    for (let i = 0, l = ids.length; i < l; i++) {
+                        idStrList = idStrList + (ids[i].id) + ',';
+                    }
+                    idStrList = idStrList.replace(/,$/, '');
+                    event.dataTransfer.setData("text", idStrList);
                 }
-                idStrList = idStrList.replace(/,$/,'');
-                event.dataTransfer.setData("text", idStrList);
             },
             //ダブルクリック処理
             openEventPhoto(event){
