@@ -5,6 +5,7 @@
     >
         <h2 v-show="showList">User List</h2>
         <h2 v-show="!showList">{{listTitle}}'s Photo List</h2>
+        <h5 v-show="this.$parent.DragDropTrigger && showList">登録するユーザーカードにドロップしてください</h5>
         <v-layout row wrap>
             <v-flex
                     v-show="showList"
@@ -19,7 +20,6 @@
                         @dblclick=openUserPhoto(user)
                         @drop.prevent="photoDrop(user.id)"
                 >
-                    <!--<span class="headline black&#45;&#45;text" v-text="user.first_name"></span>-->
                     <v-card-title><h5>{{user.first_name}}</h5></v-card-title>
                     <v-divider></v-divider>
                     <v-list dense>
@@ -32,14 +32,27 @@
             </v-flex>
         </v-layout>
         <v-card
-                color="blue-grey lighten-5"
-                v-show="!showList"
+                color="blue-grey lighten-4"
+                v-show="!showList && this.$parent.DragDropTrigger"
                 min-width="500"
                 @drop.prevent="photoDrop(selectUserId)"
+                raised
         >
-            <v-card-title primary-title>
+            <v-card-title primary-title style="justify-content: center">
                 <div>
-                    <div class="headline">Drop Here</div>
+                    <div class="headline" style="text-align: center">Drop Here</div>
+                    <span>Please drop photos here to subscribe to the user.</span>
+                </div>
+            </v-card-title>
+        </v-card>
+        <v-card
+                color="blue-grey lighten-5"
+                v-show="!showList && !this.$parent.DragDropTrigger"
+                min-width="500"
+        >
+            <v-card-title primary-title style="justify-content: center">
+                <div>
+                    <div class="headline" style="text-align: center">Drop Here</div>
                     <span>Please drop photos here to subscribe to the user.</span>
                 </div>
             </v-card-title>

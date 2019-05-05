@@ -48,6 +48,7 @@
             return {
                 eventImages:[],
                 userImages: [],
+                DragDropTrigger: false,
             };
         },
         async mounted () {

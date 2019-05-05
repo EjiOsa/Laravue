@@ -46,6 +46,7 @@
                             :src="image.photo"
                             draggable="true"
                             @dragstart="movePhoto(selectedMovePhotoId)"
+                            @dragend="dragEnd"
                     ></v-img>
                     <v-card-actions class="px-1 py-0">
                         <v-checkbox
@@ -132,6 +133,7 @@
                     //写真のチェックがないままドロップした時
                     alert('写真が選択されていません。');//ドロップの開始時でアラート設定
                 } else {
+                    this.$parent.DragDropTrigger = true;
                     let idStrList = '';
                     for (let i = 0, l = ids.length; i < l; i++) {
                         idStrList = idStrList + (ids[i].id) + ',';
@@ -139,6 +141,9 @@
                     idStrList = idStrList.replace(/,$/, '');
                     event.dataTransfer.setData("text", idStrList);
                 }
+            },
+            dragEnd(){
+                this.$parent.DragDropTrigger = false;
             },
             //ダブルクリック処理
             openEventPhoto(event){
