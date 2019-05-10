@@ -375,7 +375,10 @@
 </script>
 
 <style scoped>
-
+    .v-input--selection-controls{
+        margin-top: 0;
+        padding-top: 0;
+    }
 </style>
 
 <!--

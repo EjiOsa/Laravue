@@ -31,14 +31,15 @@
                 </v-card>
             </v-flex>
         </v-layout>
+        <!--  ドラッグ時用に2個カードを準備。v-ifは再レンダリングになるので、v-showを使用  -->
         <v-card
-                color="blue-grey lighten-4"
+                color="blue-grey lighten-3"
                 v-show="!showList && this.$parent.DragDropTrigger"
                 min-width="500"
                 @drop.prevent="photoDrop(selectUserId)"
                 raised
         >
-            <v-card-title primary-title style="justify-content: center">
+            <v-card-title primary-title style="justify-content: center" class="font-weight-black">
                 <div>
                     <div class="headline" style="text-align: center">Drop Here</div>
                     <span>Please drop photos here to subscribe to the user.</span>

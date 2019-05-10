@@ -133,7 +133,7 @@
                     //写真のチェックがないままドロップした時
                     alert('写真が選択されていません。');//ドロップの開始時でアラート設定
                 } else {
-                    this.$parent.DragDropTrigger = true;
+                    this.$parent.DragDropTrigger = true;//トリガーは親に持たせて使用。
                     let idStrList = '';
                     for (let i = 0, l = ids.length; i < l; i++) {
                         idStrList = idStrList + (ids[i].id) + ',';
@@ -142,6 +142,7 @@
                     event.dataTransfer.setData("text", idStrList);
                 }
             },
+            //ドラッグ終了時には元に戻す。
             dragEnd(){
                 this.$parent.DragDropTrigger = false;
             },
