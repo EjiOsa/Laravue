@@ -291,13 +291,13 @@
             },
             //スタンバイの写真の一斉処理
             preparePhotoDelete(){
-                for(let i = 0; i < this.selectedPreparePhotoId.length; i++){
+                for(let i = 0,len = this.selectedPreparePhotoId.length; i<len; i++){
                     this.standByPhotoClear(this.selectedPreparePhotoId[i]);
                 }
                 this.selectedPreparePhotoId = [];
             },
             preparePhotoAllCheck(){
-                for (let i = 0; i < this.prepareImages.length; i++) {
+                for (let i = 0, len = this.prepareImages.length; i<len ; i++) {
                     this.selectedPreparePhotoId.push(this.prepareImages[i].unique);
                 }
             },
@@ -308,7 +308,7 @@
             async keepPhotoListDelete(){
                 if (confirm('チェックされた写真を削除します。よろしいですか？')) {
                     if(this.selectedKeepPhoto.length){
-                    for (let i = 0, l = this.selectedKeepPhoto.length; i < l; i++) {
+                    for (let i = 0, l=this.selectedKeepPhoto.length; i<l; i++) {
                         PhotoAxios.defaults.headers['Authorization'] = 'Bearer ' + this.tokenNo;
                         await PhotoAxios.delete(PhotoUrl+'/'+this.selectedKeepPhoto[i].id)
                             .then(
